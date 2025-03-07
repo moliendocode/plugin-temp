@@ -21,6 +21,6 @@ public:
 
 private:
 	//Replicated Variables
-	UPROPERTY(Replicated, VisibleAnywhere, Category = "OWS|PlayerState")
+	UPROPERTY(Replicated, VisibleAnywhere, BlueprintReadOnly, Category = "OWS|PlayerState")
 	FString CharacterName;
 };

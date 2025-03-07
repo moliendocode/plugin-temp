@@ -62,13 +62,13 @@ public:
 	void GetCharacterStats(FCharacterStats& OutCharacterStats) const;
 
 	//Replicated Variables
-	UPROPERTY(ReplicatedUsing = OnRep_CharacterData, VisibleAnywhere, BlueprintReadWrite, Category = "OWS|Character")
+	UPROPERTY(ReplicatedUsing = OnRep_CharacterData, VisibleAnywhere, BlueprintReadOnly, Category = "OWS|Character")
 	FCharacterData CharacterData;
 
-	UPROPERTY(ReplicatedUsing = OnRep_InventoryData, VisibleAnywhere, BlueprintReadWrite, Category = "OWS|Character")
+	UPROPERTY(ReplicatedUsing = OnRep_InventoryData, VisibleAnywhere, BlueprintReadOnly, Category = "OWS|Character")
 	TArray<FInventoryData> InventoryData;
 
-	UPROPERTY(ReplicatedUsing = OnRep_CharacterStats, VisibleAnywhere, BlueprintReadWrite, Category = "OWS|Character")
+	UPROPERTY(ReplicatedUsing = OnRep_CharacterStats, VisibleAnywhere, BlueprintReadOnly, Category = "OWS|Character")
 	FCharacterStats CharacterStats;
 
 	// OnRep Functions
@@ -93,5 +93,8 @@ public:
 
 
 	//Main function to update character values - Server Side Only
+	UFUNCTION(Server, Reliable, WithValidation)
 	void UpdateCharacterData(const FCharacterData& InCharacterData, const TArray<FInventoryData>& InInventoryData, const FCharacterStats& InCharacterStats);
+	void UpdateCharacterData_Implementation(const FCharacterData& InCharacterData, const TArray<FInventoryData>& InInventoryData, const FCharacterStats& InCharacterStats);
+	bool UpdateCharacterData_Validate(const FCharacterData& InCharacterData, const TArray<FInventoryData>& InInventoryData, const FCharacterStats& InCharacterStats);
 };

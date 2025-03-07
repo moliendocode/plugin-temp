@@ -2,7 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
-#include "OWSAuthenticationInterface.h"
+#include "Authentication/OWSAuthenticationInterface.h"
 #include "OWSPlayerController.generated.h"
 
 class AOWSCharacter;
@@ -15,7 +15,7 @@ class FHttpResponsePtr;
 
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnLoginSuccessDelegate);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnLoginFailDelegate, const FString&, ErrorMessage);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE__OneParam(FOnLoginFailDelegate, const FString&, ErrorMessage);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnRegisterSuccessDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnRegisterFailDelegate, const FString&, ErrorMessage);
 
@@ -40,8 +40,8 @@ public:
 
 	void OnLoginComplete(bool bSuccess, const FString& ErrorMessage);
 
-	UFUNCTION(Client, Reliable, Category = "OWS|Authentication")
-	void Client_OnLoginComplete(bool bSuccess, const FString& ErrorMessage);
+	UFUNCTION(Client, Reliable, Category = "OWS|Authentication") //Ahora si se usa
+		void Client_OnLoginComplete(bool bSuccess, const FString& ErrorMessage);
 	void Client_OnLoginComplete_Implementation(bool bSuccess, const FString& ErrorMessage);
 
 	UPROPERTY(BlueprintAssignable, Category = "OWS|Authentication")
@@ -60,8 +60,8 @@ public:
 
 	void OnRegisterComplete(bool bSuccess, const FString& ErrorMessage);
 
-	UFUNCTION(Client, Reliable, Category = "OWS|Authentication")
-	void Client_OnRegisterComplete(bool bSuccess, const FString& ErrorMessage);
+	UFUNCTION(Client, Reliable, Category = "OWS|Authentication") //Ahora si se usa
+		void Client_OnRegisterComplete(bool bSuccess, const FString& ErrorMessage);
 	void Client_OnRegisterComplete_Implementation(bool bSuccess, const FString& ErrorMessage);
 
 	UPROPERTY(BlueprintAssignable, Category = "OWS|Authentication")
@@ -78,13 +78,11 @@ public:
 	UFUNCTION() // Ya no es BlueprintCallable
 		void OnGetCharacterDataResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
 
-	//Character
-
 	//Input
 	UFUNCTION(Server, Reliable, WithValidation)
 	void Server_Move(FVector_NetQuantize NewLocation);
 	void Server_Move_Implementation(FVector_NetQuantize NewLocation);
-	bool Server_Move_Validate(FVector_NetQuantize NewLocation) { return true; }
+	bool Server_Move_Validate(FVector_NetQuantize NewLocation);
 
 
 protected:

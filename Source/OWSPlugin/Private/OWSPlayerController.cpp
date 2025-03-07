@@ -4,10 +4,10 @@
 #include "OWSGameInstanceSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 #include "HttpModule.h"
-#include "Interfaces/IHttpRequest.h"  // Corrected include
-#include "Interfaces/IHttpResponse.h" // Corrected include
+#include "Interfaces/IHttpRequest.h"
+#include "Interfaces/IHttpResponse.h"
 #include "JsonObjectConverter.h"
-#include "OWSPlugin.h"
+#include "../OWSPlugin.h"
 #include "GameFramework/PlayerInput.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
@@ -427,4 +427,9 @@ void AOWSPlayerController::Server_Move_Implementation(FVector_NetQuantize NewLoc
     {
         GetPawn()->SetActorLocation(NewLocation);
     }
+}
+
+bool AOWSPlayerController::Server_Move_Validate(FVector_NetQuantize NewLocation)
+{
+    return true;
 }
