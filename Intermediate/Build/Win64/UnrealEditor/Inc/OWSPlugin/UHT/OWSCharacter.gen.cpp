@@ -6,869 +6,651 @@
 
 #include "UObject/GeneratedCppIncludes.h"
 #include "OWSPlugin/Public/OWSCharacter.h"
-#include "Runtime/GameplayTags/Classes/GameplayTagContainer.h"
+#include "OWSPlugin/Public/DataTypes/OWSDataTypes.h"
+#include "Runtime/Engine/Classes/Engine/NetSerialization.h"
+#include "UObject/CoreNet.h"
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeOWSCharacter() {}
 
 // Begin Cross Module References
-AIMODULE_API UClass* Z_Construct_UClass_UGenericTeamAgentInterface_NoRegister();
-ENGINE_API UClass* Z_Construct_UClass_UStaticMesh_NoRegister();
-ENGINE_API UClass* Z_Construct_UClass_UTexture2D_NoRegister();
-GAMEPLAYTAGS_API UScriptStruct* Z_Construct_UScriptStruct_FGameplayTagContainer();
+ENGINE_API UClass* Z_Construct_UClass_ACharacter();
+ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FVector_NetQuantize();
 OWSPLUGIN_API UClass* Z_Construct_UClass_AOWSCharacter();
 OWSPLUGIN_API UClass* Z_Construct_UClass_AOWSCharacter_NoRegister();
-OWSPLUGIN_API UClass* Z_Construct_UClass_AOWSCharacterBase();
+OWSPLUGIN_API UFunction* Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterDataReceivedDelegate__DelegateSignature();
+OWSPLUGIN_API UFunction* Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterStatsReceivedDelegate__DelegateSignature();
+OWSPLUGIN_API UFunction* Z_Construct_UDelegateFunction_OWSPlugin_OnInventoryDataReceivedDelegate__DelegateSignature();
+OWSPLUGIN_API UScriptStruct* Z_Construct_UScriptStruct_FCharacterData();
 OWSPLUGIN_API UScriptStruct* Z_Construct_UScriptStruct_FCharacterStats();
-OWSPLUGIN_API UScriptStruct* Z_Construct_UScriptStruct_FCustomCharacterDataStruct();
-OWSPLUGIN_API UScriptStruct* Z_Construct_UScriptStruct_FGameplayTagsToUse();
+OWSPLUGIN_API UScriptStruct* Z_Construct_UScriptStruct_FInventoryData();
 UPackage* Z_Construct_UPackage__Script_OWSPlugin();
 // End Cross Module References
 
-// Begin ScriptStruct FCustomCharacterDataStruct
-static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_CustomCharacterDataStruct;
-class UScriptStruct* FCustomCharacterDataStruct::StaticStruct()
+// Begin Delegate FOnCharacterDataReceivedDelegate
+struct Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterDataReceivedDelegate__DelegateSignature_Statics
 {
-	if (!Z_Registration_Info_UScriptStruct_CustomCharacterDataStruct.OuterSingleton)
+	struct _Script_OWSPlugin_eventOnCharacterDataReceivedDelegate_Parms
 	{
-		Z_Registration_Info_UScriptStruct_CustomCharacterDataStruct.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FCustomCharacterDataStruct, (UObject*)Z_Construct_UPackage__Script_OWSPlugin(), TEXT("CustomCharacterDataStruct"));
-	}
-	return Z_Registration_Info_UScriptStruct_CustomCharacterDataStruct.OuterSingleton;
-}
-template<> OWSPLUGIN_API UScriptStruct* StaticStruct<FCustomCharacterDataStruct>()
-{
-	return FCustomCharacterDataStruct::StaticStruct();
-}
-struct Z_Construct_UScriptStruct_FCustomCharacterDataStruct_Statics
-{
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[] = {
-		{ "BlueprintType", "true" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CharacterName_MetaData[] = {
-		{ "Category", "Customization" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CharacterID_MetaData[] = {
-		{ "Category", "Customization" },
-		{ "ClampMin", "1" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-		{ "UIMin", "1" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CharacterTexture_MetaData[] = {
-		{ "Category", "Customization" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CharacterMesh_MetaData[] = {
-		{ "Category", "Customization" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FStrPropertyParams NewProp_CharacterName;
-	static const UECodeGen_Private::FIntPropertyParams NewProp_CharacterID;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_CharacterTexture;
-	static const UECodeGen_Private::FSoftObjectPropertyParams NewProp_CharacterMesh;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-	static void* NewStructOps()
-	{
-		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FCustomCharacterDataStruct>();
-	}
-	static const UECodeGen_Private::FStructParams StructParams;
-};
-const UECodeGen_Private::FStrPropertyParams Z_Construct_UScriptStruct_FCustomCharacterDataStruct_Statics::NewProp_CharacterName = { "CharacterName", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FCustomCharacterDataStruct, CharacterName), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CharacterName_MetaData), NewProp_CharacterName_MetaData) };
-const UECodeGen_Private::FIntPropertyParams Z_Construct_UScriptStruct_FCustomCharacterDataStruct_Statics::NewProp_CharacterID = { "CharacterID", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FCustomCharacterDataStruct, CharacterID), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CharacterID_MetaData), NewProp_CharacterID_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UScriptStruct_FCustomCharacterDataStruct_Statics::NewProp_CharacterTexture = { "CharacterTexture", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FCustomCharacterDataStruct, CharacterTexture), Z_Construct_UClass_UTexture2D_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CharacterTexture_MetaData), NewProp_CharacterTexture_MetaData) };
-const UECodeGen_Private::FSoftObjectPropertyParams Z_Construct_UScriptStruct_FCustomCharacterDataStruct_Statics::NewProp_CharacterMesh = { "CharacterMesh", nullptr, (EPropertyFlags)0x0014000000000005, UECodeGen_Private::EPropertyGenFlags::SoftObject, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FCustomCharacterDataStruct, CharacterMesh), Z_Construct_UClass_UStaticMesh_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CharacterMesh_MetaData), NewProp_CharacterMesh_MetaData) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FCustomCharacterDataStruct_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FCustomCharacterDataStruct_Statics::NewProp_CharacterName,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FCustomCharacterDataStruct_Statics::NewProp_CharacterID,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FCustomCharacterDataStruct_Statics::NewProp_CharacterTexture,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FCustomCharacterDataStruct_Statics::NewProp_CharacterMesh,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FCustomCharacterDataStruct_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FCustomCharacterDataStruct_Statics::StructParams = {
-	(UObject* (*)())Z_Construct_UPackage__Script_OWSPlugin,
-	nullptr,
-	&NewStructOps,
-	"CustomCharacterDataStruct",
-	Z_Construct_UScriptStruct_FCustomCharacterDataStruct_Statics::PropPointers,
-	UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FCustomCharacterDataStruct_Statics::PropPointers),
-	sizeof(FCustomCharacterDataStruct),
-	alignof(FCustomCharacterDataStruct),
-	RF_Public|RF_Transient|RF_MarkAsNative,
-	EStructFlags(0x00000001),
-	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FCustomCharacterDataStruct_Statics::Struct_MetaDataParams), Z_Construct_UScriptStruct_FCustomCharacterDataStruct_Statics::Struct_MetaDataParams)
-};
-UScriptStruct* Z_Construct_UScriptStruct_FCustomCharacterDataStruct()
-{
-	if (!Z_Registration_Info_UScriptStruct_CustomCharacterDataStruct.InnerSingleton)
-	{
-		UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_CustomCharacterDataStruct.InnerSingleton, Z_Construct_UScriptStruct_FCustomCharacterDataStruct_Statics::StructParams);
-	}
-	return Z_Registration_Info_UScriptStruct_CustomCharacterDataStruct.InnerSingleton;
-}
-// End ScriptStruct FCustomCharacterDataStruct
-
-// Begin ScriptStruct FCharacterStats
-static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_CharacterStats;
-class UScriptStruct* FCharacterStats::StaticStruct()
-{
-	if (!Z_Registration_Info_UScriptStruct_CharacterStats.OuterSingleton)
-	{
-		Z_Registration_Info_UScriptStruct_CharacterStats.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FCharacterStats, (UObject*)Z_Construct_UPackage__Script_OWSPlugin(), TEXT("CharacterStats"));
-	}
-	return Z_Registration_Info_UScriptStruct_CharacterStats.OuterSingleton;
-}
-template<> OWSPLUGIN_API UScriptStruct* StaticStruct<FCharacterStats>()
-{
-	return FCharacterStats::StaticStruct();
-}
-struct Z_Construct_UScriptStruct_FCharacterStats_Statics
-{
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[] = {
-		{ "BlueprintType", "true" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Health_MetaData[] = {
-		{ "Category", "Stats" },
-		{ "ClampMin", "0" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-		{ "UIMin", "0" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Stamina_MetaData[] = {
-		{ "Category", "Stats" },
-		{ "ClampMin", "0" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-		{ "UIMin", "0" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Mana_MetaData[] = {
-		{ "Category", "Stats" },
-		{ "ClampMin", "0" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-		{ "UIMin", "0" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Strength_MetaData[] = {
-		{ "Category", "Stats" },
-		{ "ClampMin", "0" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-		{ "UIMin", "0" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Dexterity_MetaData[] = {
-		{ "Category", "Stats" },
-		{ "ClampMin", "0" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-		{ "UIMin", "0" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Intelligence_MetaData[] = {
-		{ "Category", "Stats" },
-		{ "ClampMin", "0" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-		{ "UIMin", "0" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Wisdom_MetaData[] = {
-		{ "Category", "Stats" },
-		{ "ClampMin", "0" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-		{ "UIMin", "0" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Luck_MetaData[] = {
-		{ "Category", "Stats" },
-		{ "ClampMin", "0" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-		{ "UIMin", "0" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_Health;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_Stamina;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_Mana;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_Strength;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_Dexterity;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_Intelligence;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_Wisdom;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_Luck;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-	static void* NewStructOps()
-	{
-		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FCharacterStats>();
-	}
-	static const UECodeGen_Private::FStructParams StructParams;
-};
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FCharacterStats_Statics::NewProp_Health = { "Health", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FCharacterStats, Health), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Health_MetaData), NewProp_Health_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FCharacterStats_Statics::NewProp_Stamina = { "Stamina", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FCharacterStats, Stamina), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Stamina_MetaData), NewProp_Stamina_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FCharacterStats_Statics::NewProp_Mana = { "Mana", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FCharacterStats, Mana), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Mana_MetaData), NewProp_Mana_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FCharacterStats_Statics::NewProp_Strength = { "Strength", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FCharacterStats, Strength), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Strength_MetaData), NewProp_Strength_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FCharacterStats_Statics::NewProp_Dexterity = { "Dexterity", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FCharacterStats, Dexterity), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Dexterity_MetaData), NewProp_Dexterity_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FCharacterStats_Statics::NewProp_Intelligence = { "Intelligence", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FCharacterStats, Intelligence), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Intelligence_MetaData), NewProp_Intelligence_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FCharacterStats_Statics::NewProp_Wisdom = { "Wisdom", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FCharacterStats, Wisdom), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Wisdom_MetaData), NewProp_Wisdom_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FCharacterStats_Statics::NewProp_Luck = { "Luck", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FCharacterStats, Luck), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Luck_MetaData), NewProp_Luck_MetaData) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FCharacterStats_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FCharacterStats_Statics::NewProp_Health,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FCharacterStats_Statics::NewProp_Stamina,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FCharacterStats_Statics::NewProp_Mana,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FCharacterStats_Statics::NewProp_Strength,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FCharacterStats_Statics::NewProp_Dexterity,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FCharacterStats_Statics::NewProp_Intelligence,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FCharacterStats_Statics::NewProp_Wisdom,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FCharacterStats_Statics::NewProp_Luck,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FCharacterStats_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FCharacterStats_Statics::StructParams = {
-	(UObject* (*)())Z_Construct_UPackage__Script_OWSPlugin,
-	nullptr,
-	&NewStructOps,
-	"CharacterStats",
-	Z_Construct_UScriptStruct_FCharacterStats_Statics::PropPointers,
-	UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FCharacterStats_Statics::PropPointers),
-	sizeof(FCharacterStats),
-	alignof(FCharacterStats),
-	RF_Public|RF_Transient|RF_MarkAsNative,
-	EStructFlags(0x00000001),
-	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FCharacterStats_Statics::Struct_MetaDataParams), Z_Construct_UScriptStruct_FCharacterStats_Statics::Struct_MetaDataParams)
-};
-UScriptStruct* Z_Construct_UScriptStruct_FCharacterStats()
-{
-	if (!Z_Registration_Info_UScriptStruct_CharacterStats.InnerSingleton)
-	{
-		UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_CharacterStats.InnerSingleton, Z_Construct_UScriptStruct_FCharacterStats_Statics::StructParams);
-	}
-	return Z_Registration_Info_UScriptStruct_CharacterStats.InnerSingleton;
-}
-// End ScriptStruct FCharacterStats
-
-// Begin ScriptStruct FGameplayTagsToUse
-static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_GameplayTagsToUse;
-class UScriptStruct* FGameplayTagsToUse::StaticStruct()
-{
-	if (!Z_Registration_Info_UScriptStruct_GameplayTagsToUse.OuterSingleton)
-	{
-		Z_Registration_Info_UScriptStruct_GameplayTagsToUse.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FGameplayTagsToUse, (UObject*)Z_Construct_UPackage__Script_OWSPlugin(), TEXT("GameplayTagsToUse"));
-	}
-	return Z_Registration_Info_UScriptStruct_GameplayTagsToUse.OuterSingleton;
-}
-template<> OWSPLUGIN_API UScriptStruct* StaticStruct<FGameplayTagsToUse>()
-{
-	return FGameplayTagsToUse::StaticStruct();
-}
-struct Z_Construct_UScriptStruct_FGameplayTagsToUse_Statics
-{
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[] = {
-		{ "BlueprintType", "true" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CharacterTags_MetaData[] = {
-		{ "Category", "GameplayTags" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_AbilitiesTags_MetaData[] = {
-		{ "Category", "GameplayTags" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_WeaponTags_MetaData[] = {
-		{ "Category", "GameplayTags" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ArmorTags_MetaData[] = {
-		{ "Category", "GameplayTags" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FStructPropertyParams NewProp_CharacterTags;
-	static const UECodeGen_Private::FStructPropertyParams NewProp_AbilitiesTags;
-	static const UECodeGen_Private::FStructPropertyParams NewProp_WeaponTags;
-	static const UECodeGen_Private::FStructPropertyParams NewProp_ArmorTags;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-	static void* NewStructOps()
-	{
-		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FGameplayTagsToUse>();
-	}
-	static const UECodeGen_Private::FStructParams StructParams;
-};
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FGameplayTagsToUse_Statics::NewProp_CharacterTags = { "CharacterTags", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FGameplayTagsToUse, CharacterTags), Z_Construct_UScriptStruct_FGameplayTagContainer, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CharacterTags_MetaData), NewProp_CharacterTags_MetaData) }; // 3352185621
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FGameplayTagsToUse_Statics::NewProp_AbilitiesTags = { "AbilitiesTags", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FGameplayTagsToUse, AbilitiesTags), Z_Construct_UScriptStruct_FGameplayTagContainer, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_AbilitiesTags_MetaData), NewProp_AbilitiesTags_MetaData) }; // 3352185621
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FGameplayTagsToUse_Statics::NewProp_WeaponTags = { "WeaponTags", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FGameplayTagsToUse, WeaponTags), Z_Construct_UScriptStruct_FGameplayTagContainer, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_WeaponTags_MetaData), NewProp_WeaponTags_MetaData) }; // 3352185621
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FGameplayTagsToUse_Statics::NewProp_ArmorTags = { "ArmorTags", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FGameplayTagsToUse, ArmorTags), Z_Construct_UScriptStruct_FGameplayTagContainer, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ArmorTags_MetaData), NewProp_ArmorTags_MetaData) }; // 3352185621
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FGameplayTagsToUse_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGameplayTagsToUse_Statics::NewProp_CharacterTags,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGameplayTagsToUse_Statics::NewProp_AbilitiesTags,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGameplayTagsToUse_Statics::NewProp_WeaponTags,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FGameplayTagsToUse_Statics::NewProp_ArmorTags,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FGameplayTagsToUse_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FGameplayTagsToUse_Statics::StructParams = {
-	(UObject* (*)())Z_Construct_UPackage__Script_OWSPlugin,
-	nullptr,
-	&NewStructOps,
-	"GameplayTagsToUse",
-	Z_Construct_UScriptStruct_FGameplayTagsToUse_Statics::PropPointers,
-	UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FGameplayTagsToUse_Statics::PropPointers),
-	sizeof(FGameplayTagsToUse),
-	alignof(FGameplayTagsToUse),
-	RF_Public|RF_Transient|RF_MarkAsNative,
-	EStructFlags(0x00000001),
-	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FGameplayTagsToUse_Statics::Struct_MetaDataParams), Z_Construct_UScriptStruct_FGameplayTagsToUse_Statics::Struct_MetaDataParams)
-};
-UScriptStruct* Z_Construct_UScriptStruct_FGameplayTagsToUse()
-{
-	if (!Z_Registration_Info_UScriptStruct_GameplayTagsToUse.InnerSingleton)
-	{
-		UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_GameplayTagsToUse.InnerSingleton, Z_Construct_UScriptStruct_FGameplayTagsToUse_Statics::StructParams);
-	}
-	return Z_Registration_Info_UScriptStruct_GameplayTagsToUse.InnerSingleton;
-}
-// End ScriptStruct FGameplayTagsToUse
-
-// Begin Class AOWSCharacter Function GetCharacterID
-struct Z_Construct_UFunction_AOWSCharacter_GetCharacterID_Statics
-{
-	struct OWSCharacter_eventGetCharacterID_Parms
-	{
-		int32 ReturnValue;
+		FCharacterData CharacterData;
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Character" },
 		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CharacterData_MetaData[] = {
+		{ "NativeConst", "" },
+	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FIntPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_CharacterData;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_AOWSCharacter_GetCharacterID_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventGetCharacterID_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSCharacter_GetCharacterID_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_GetCharacterID_Statics::NewProp_ReturnValue,
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterDataReceivedDelegate__DelegateSignature_Statics::NewProp_CharacterData = { "CharacterData", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_OWSPlugin_eventOnCharacterDataReceivedDelegate_Parms, CharacterData), Z_Construct_UScriptStruct_FCharacterData, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CharacterData_MetaData), NewProp_CharacterData_MetaData) }; // 2676746057
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterDataReceivedDelegate__DelegateSignature_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterDataReceivedDelegate__DelegateSignature_Statics::NewProp_CharacterData,
 };
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetCharacterID_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_GetCharacterID_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "GetCharacterID", nullptr, nullptr, Z_Construct_UFunction_AOWSCharacter_GetCharacterID_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetCharacterID_Statics::PropPointers), sizeof(Z_Construct_UFunction_AOWSCharacter_GetCharacterID_Statics::OWSCharacter_eventGetCharacterID_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetCharacterID_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_GetCharacterID_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UFunction_AOWSCharacter_GetCharacterID_Statics::OWSCharacter_eventGetCharacterID_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_AOWSCharacter_GetCharacterID()
+static_assert(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterDataReceivedDelegate__DelegateSignature_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterDataReceivedDelegate__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_OWSPlugin, nullptr, "OnCharacterDataReceivedDelegate__DelegateSignature", nullptr, nullptr, Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterDataReceivedDelegate__DelegateSignature_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterDataReceivedDelegate__DelegateSignature_Statics::PropPointers), sizeof(Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterDataReceivedDelegate__DelegateSignature_Statics::_Script_OWSPlugin_eventOnCharacterDataReceivedDelegate_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterDataReceivedDelegate__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterDataReceivedDelegate__DelegateSignature_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterDataReceivedDelegate__DelegateSignature_Statics::_Script_OWSPlugin_eventOnCharacterDataReceivedDelegate_Parms) < MAX_uint16);
+UFunction* Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterDataReceivedDelegate__DelegateSignature()
 {
 	static UFunction* ReturnFunction = nullptr;
 	if (!ReturnFunction)
 	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_GetCharacterID_Statics::FuncParams);
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterDataReceivedDelegate__DelegateSignature_Statics::FuncParams);
 	}
 	return ReturnFunction;
 }
-DEFINE_FUNCTION(AOWSCharacter::execGetCharacterID)
+void FOnCharacterDataReceivedDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnCharacterDataReceivedDelegate, FCharacterData const& CharacterData)
 {
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	*(int32*)Z_Param__Result=P_THIS->GetCharacterID();
-	P_NATIVE_END;
-}
-// End Class AOWSCharacter Function GetCharacterID
-
-// Begin Class AOWSCharacter Function GetCharacterMesh
-struct Z_Construct_UFunction_AOWSCharacter_GetCharacterMesh_Statics
-{
-	struct OWSCharacter_eventGetCharacterMesh_Parms
+	struct _Script_OWSPlugin_eventOnCharacterDataReceivedDelegate_Parms
 	{
-		UStaticMesh* ReturnValue;
+		FCharacterData CharacterData;
+	};
+	_Script_OWSPlugin_eventOnCharacterDataReceivedDelegate_Parms Parms;
+	Parms.CharacterData=CharacterData;
+	OnCharacterDataReceivedDelegate.ProcessMulticastDelegate<UObject>(&Parms);
+}
+// End Delegate FOnCharacterDataReceivedDelegate
+
+// Begin Delegate FOnInventoryDataReceivedDelegate
+struct Z_Construct_UDelegateFunction_OWSPlugin_OnInventoryDataReceivedDelegate__DelegateSignature_Statics
+{
+	struct _Script_OWSPlugin_eventOnInventoryDataReceivedDelegate_Parms
+	{
+		TArray<FInventoryData> InventoryData;
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Character" },
 		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_InventoryData_MetaData[] = {
+		{ "NativeConst", "" },
+	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_InventoryData_Inner;
+	static const UECodeGen_Private::FArrayPropertyParams NewProp_InventoryData;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AOWSCharacter_GetCharacterMesh_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventGetCharacterMesh_Parms, ReturnValue), Z_Construct_UClass_UStaticMesh_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSCharacter_GetCharacterMesh_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_GetCharacterMesh_Statics::NewProp_ReturnValue,
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UDelegateFunction_OWSPlugin_OnInventoryDataReceivedDelegate__DelegateSignature_Statics::NewProp_InventoryData_Inner = { "InventoryData", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FInventoryData, METADATA_PARAMS(0, nullptr) }; // 2983649378
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UDelegateFunction_OWSPlugin_OnInventoryDataReceivedDelegate__DelegateSignature_Statics::NewProp_InventoryData = { "InventoryData", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_OWSPlugin_eventOnInventoryDataReceivedDelegate_Parms, InventoryData), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InventoryData_MetaData), NewProp_InventoryData_MetaData) }; // 2983649378
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_OWSPlugin_OnInventoryDataReceivedDelegate__DelegateSignature_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_OWSPlugin_OnInventoryDataReceivedDelegate__DelegateSignature_Statics::NewProp_InventoryData_Inner,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_OWSPlugin_OnInventoryDataReceivedDelegate__DelegateSignature_Statics::NewProp_InventoryData,
 };
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetCharacterMesh_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_GetCharacterMesh_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "GetCharacterMesh", nullptr, nullptr, Z_Construct_UFunction_AOWSCharacter_GetCharacterMesh_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetCharacterMesh_Statics::PropPointers), sizeof(Z_Construct_UFunction_AOWSCharacter_GetCharacterMesh_Statics::OWSCharacter_eventGetCharacterMesh_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetCharacterMesh_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_GetCharacterMesh_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UFunction_AOWSCharacter_GetCharacterMesh_Statics::OWSCharacter_eventGetCharacterMesh_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_AOWSCharacter_GetCharacterMesh()
+static_assert(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_OWSPlugin_OnInventoryDataReceivedDelegate__DelegateSignature_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_OWSPlugin_OnInventoryDataReceivedDelegate__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_OWSPlugin, nullptr, "OnInventoryDataReceivedDelegate__DelegateSignature", nullptr, nullptr, Z_Construct_UDelegateFunction_OWSPlugin_OnInventoryDataReceivedDelegate__DelegateSignature_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_OWSPlugin_OnInventoryDataReceivedDelegate__DelegateSignature_Statics::PropPointers), sizeof(Z_Construct_UDelegateFunction_OWSPlugin_OnInventoryDataReceivedDelegate__DelegateSignature_Statics::_Script_OWSPlugin_eventOnInventoryDataReceivedDelegate_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_OWSPlugin_OnInventoryDataReceivedDelegate__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_OWSPlugin_OnInventoryDataReceivedDelegate__DelegateSignature_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UDelegateFunction_OWSPlugin_OnInventoryDataReceivedDelegate__DelegateSignature_Statics::_Script_OWSPlugin_eventOnInventoryDataReceivedDelegate_Parms) < MAX_uint16);
+UFunction* Z_Construct_UDelegateFunction_OWSPlugin_OnInventoryDataReceivedDelegate__DelegateSignature()
 {
 	static UFunction* ReturnFunction = nullptr;
 	if (!ReturnFunction)
 	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_GetCharacterMesh_Statics::FuncParams);
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UDelegateFunction_OWSPlugin_OnInventoryDataReceivedDelegate__DelegateSignature_Statics::FuncParams);
 	}
 	return ReturnFunction;
 }
-DEFINE_FUNCTION(AOWSCharacter::execGetCharacterMesh)
+void FOnInventoryDataReceivedDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnInventoryDataReceivedDelegate, TArray<FInventoryData> const& InventoryData)
 {
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	*(UStaticMesh**)Z_Param__Result=P_THIS->GetCharacterMesh();
-	P_NATIVE_END;
-}
-// End Class AOWSCharacter Function GetCharacterMesh
-
-// Begin Class AOWSCharacter Function GetCharacterName
-struct Z_Construct_UFunction_AOWSCharacter_GetCharacterName_Statics
-{
-	struct OWSCharacter_eventGetCharacterName_Parms
+	struct _Script_OWSPlugin_eventOnInventoryDataReceivedDelegate_Parms
 	{
-		FString ReturnValue;
+		TArray<FInventoryData> InventoryData;
+	};
+	_Script_OWSPlugin_eventOnInventoryDataReceivedDelegate_Parms Parms;
+	Parms.InventoryData=InventoryData;
+	OnInventoryDataReceivedDelegate.ProcessMulticastDelegate<UObject>(&Parms);
+}
+// End Delegate FOnInventoryDataReceivedDelegate
+
+// Begin Delegate FOnCharacterStatsReceivedDelegate
+struct Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterStatsReceivedDelegate__DelegateSignature_Statics
+{
+	struct _Script_OWSPlugin_eventOnCharacterStatsReceivedDelegate_Parms
+	{
+		FCharacterStats CharacterStats;
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Character" },
 		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CharacterStats_MetaData[] = {
+		{ "NativeConst", "" },
+	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FStrPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_CharacterStats;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_AOWSCharacter_GetCharacterName_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventGetCharacterName_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSCharacter_GetCharacterName_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_GetCharacterName_Statics::NewProp_ReturnValue,
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterStatsReceivedDelegate__DelegateSignature_Statics::NewProp_CharacterStats = { "CharacterStats", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_OWSPlugin_eventOnCharacterStatsReceivedDelegate_Parms, CharacterStats), Z_Construct_UScriptStruct_FCharacterStats, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CharacterStats_MetaData), NewProp_CharacterStats_MetaData) }; // 3500993001
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterStatsReceivedDelegate__DelegateSignature_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterStatsReceivedDelegate__DelegateSignature_Statics::NewProp_CharacterStats,
 };
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetCharacterName_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_GetCharacterName_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "GetCharacterName", nullptr, nullptr, Z_Construct_UFunction_AOWSCharacter_GetCharacterName_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetCharacterName_Statics::PropPointers), sizeof(Z_Construct_UFunction_AOWSCharacter_GetCharacterName_Statics::OWSCharacter_eventGetCharacterName_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetCharacterName_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_GetCharacterName_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UFunction_AOWSCharacter_GetCharacterName_Statics::OWSCharacter_eventGetCharacterName_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_AOWSCharacter_GetCharacterName()
+static_assert(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterStatsReceivedDelegate__DelegateSignature_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterStatsReceivedDelegate__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_OWSPlugin, nullptr, "OnCharacterStatsReceivedDelegate__DelegateSignature", nullptr, nullptr, Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterStatsReceivedDelegate__DelegateSignature_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterStatsReceivedDelegate__DelegateSignature_Statics::PropPointers), sizeof(Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterStatsReceivedDelegate__DelegateSignature_Statics::_Script_OWSPlugin_eventOnCharacterStatsReceivedDelegate_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterStatsReceivedDelegate__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterStatsReceivedDelegate__DelegateSignature_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterStatsReceivedDelegate__DelegateSignature_Statics::_Script_OWSPlugin_eventOnCharacterStatsReceivedDelegate_Parms) < MAX_uint16);
+UFunction* Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterStatsReceivedDelegate__DelegateSignature()
 {
 	static UFunction* ReturnFunction = nullptr;
 	if (!ReturnFunction)
 	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_GetCharacterName_Statics::FuncParams);
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterStatsReceivedDelegate__DelegateSignature_Statics::FuncParams);
 	}
 	return ReturnFunction;
 }
-DEFINE_FUNCTION(AOWSCharacter::execGetCharacterName)
+void FOnCharacterStatsReceivedDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnCharacterStatsReceivedDelegate, FCharacterStats const& CharacterStats)
 {
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	*(FString*)Z_Param__Result=P_THIS->GetCharacterName();
-	P_NATIVE_END;
-}
-// End Class AOWSCharacter Function GetCharacterName
-
-// Begin Class AOWSCharacter Function GetCharacterTexture
-struct Z_Construct_UFunction_AOWSCharacter_GetCharacterTexture_Statics
-{
-	struct OWSCharacter_eventGetCharacterTexture_Parms
+	struct _Script_OWSPlugin_eventOnCharacterStatsReceivedDelegate_Parms
 	{
-		UTexture2D* ReturnValue;
+		FCharacterStats CharacterStats;
 	};
+	_Script_OWSPlugin_eventOnCharacterStatsReceivedDelegate_Parms Parms;
+	Parms.CharacterStats=CharacterStats;
+	OnCharacterStatsReceivedDelegate.ProcessMulticastDelegate<UObject>(&Parms);
+}
+// End Delegate FOnCharacterStatsReceivedDelegate
+
+// Begin Class AOWSCharacter Function Client_RejectMove
+struct OWSCharacter_eventClient_RejectMove_Parms
+{
+	FVector_NetQuantize CorrectLocation;
+};
+static const FName NAME_AOWSCharacter_Client_RejectMove = FName(TEXT("Client_RejectMove"));
+void AOWSCharacter::Client_RejectMove(FVector_NetQuantize CorrectLocation)
+{
+	OWSCharacter_eventClient_RejectMove_Parms Parms;
+	Parms.CorrectLocation=CorrectLocation;
+	UFunction* Func = FindFunctionChecked(NAME_AOWSCharacter_Client_RejectMove);
+	ProcessEvent(Func,&Parms);
+}
+struct Z_Construct_UFunction_AOWSCharacter_Client_RejectMove_Statics
+{
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Character" },
 		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_CorrectLocation;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AOWSCharacter_GetCharacterTexture_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventGetCharacterTexture_Parms, ReturnValue), Z_Construct_UClass_UTexture2D_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSCharacter_GetCharacterTexture_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_GetCharacterTexture_Statics::NewProp_ReturnValue,
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AOWSCharacter_Client_RejectMove_Statics::NewProp_CorrectLocation = { "CorrectLocation", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventClient_RejectMove_Parms, CorrectLocation), Z_Construct_UScriptStruct_FVector_NetQuantize, METADATA_PARAMS(0, nullptr) }; // 1723029535
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSCharacter_Client_RejectMove_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_Client_RejectMove_Statics::NewProp_CorrectLocation,
 };
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetCharacterTexture_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_GetCharacterTexture_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "GetCharacterTexture", nullptr, nullptr, Z_Construct_UFunction_AOWSCharacter_GetCharacterTexture_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetCharacterTexture_Statics::PropPointers), sizeof(Z_Construct_UFunction_AOWSCharacter_GetCharacterTexture_Statics::OWSCharacter_eventGetCharacterTexture_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetCharacterTexture_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_GetCharacterTexture_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UFunction_AOWSCharacter_GetCharacterTexture_Statics::OWSCharacter_eventGetCharacterTexture_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_AOWSCharacter_GetCharacterTexture()
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_Client_RejectMove_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_Client_RejectMove_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "Client_RejectMove", nullptr, nullptr, Z_Construct_UFunction_AOWSCharacter_Client_RejectMove_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_Client_RejectMove_Statics::PropPointers), sizeof(OWSCharacter_eventClient_RejectMove_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x01020CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_Client_RejectMove_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_Client_RejectMove_Statics::Function_MetaDataParams) };
+static_assert(sizeof(OWSCharacter_eventClient_RejectMove_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_AOWSCharacter_Client_RejectMove()
 {
 	static UFunction* ReturnFunction = nullptr;
 	if (!ReturnFunction)
 	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_GetCharacterTexture_Statics::FuncParams);
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_Client_RejectMove_Statics::FuncParams);
 	}
 	return ReturnFunction;
 }
-DEFINE_FUNCTION(AOWSCharacter::execGetCharacterTexture)
+DEFINE_FUNCTION(AOWSCharacter::execClient_RejectMove)
 {
+	P_GET_STRUCT(FVector_NetQuantize,Z_Param_CorrectLocation);
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	*(UTexture2D**)Z_Param__Result=P_THIS->GetCharacterTexture();
+	P_THIS->Client_RejectMove_Implementation(Z_Param_CorrectLocation);
 	P_NATIVE_END;
 }
-// End Class AOWSCharacter Function GetCharacterTexture
+// End Class AOWSCharacter Function Client_RejectMove
 
-// Begin Class AOWSCharacter Function GetDexterity
-struct Z_Construct_UFunction_AOWSCharacter_GetDexterity_Statics
+// Begin Class AOWSCharacter Function GetCharacterData
+struct Z_Construct_UFunction_AOWSCharacter_GetCharacterData_Statics
 {
-	struct OWSCharacter_eventGetDexterity_Parms
+	struct OWSCharacter_eventGetCharacterData_Parms
 	{
-		float ReturnValue;
+		FCharacterData OutCharacterData;
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Stats" },
+		{ "Category", "OWS|Character" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//Getters\n" },
+#endif
 		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Getters" },
+#endif
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_OutCharacterData;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AOWSCharacter_GetDexterity_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventGetDexterity_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSCharacter_GetDexterity_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_GetDexterity_Statics::NewProp_ReturnValue,
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AOWSCharacter_GetCharacterData_Statics::NewProp_OutCharacterData = { "OutCharacterData", nullptr, (EPropertyFlags)0x0010000000000180, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventGetCharacterData_Parms, OutCharacterData), Z_Construct_UScriptStruct_FCharacterData, METADATA_PARAMS(0, nullptr) }; // 2676746057
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSCharacter_GetCharacterData_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_GetCharacterData_Statics::NewProp_OutCharacterData,
 };
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetDexterity_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_GetDexterity_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "GetDexterity", nullptr, nullptr, Z_Construct_UFunction_AOWSCharacter_GetDexterity_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetDexterity_Statics::PropPointers), sizeof(Z_Construct_UFunction_AOWSCharacter_GetDexterity_Statics::OWSCharacter_eventGetDexterity_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetDexterity_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_GetDexterity_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UFunction_AOWSCharacter_GetDexterity_Statics::OWSCharacter_eventGetDexterity_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_AOWSCharacter_GetDexterity()
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetCharacterData_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_GetCharacterData_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "GetCharacterData", nullptr, nullptr, Z_Construct_UFunction_AOWSCharacter_GetCharacterData_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetCharacterData_Statics::PropPointers), sizeof(Z_Construct_UFunction_AOWSCharacter_GetCharacterData_Statics::OWSCharacter_eventGetCharacterData_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54420401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetCharacterData_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_GetCharacterData_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_AOWSCharacter_GetCharacterData_Statics::OWSCharacter_eventGetCharacterData_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_AOWSCharacter_GetCharacterData()
 {
 	static UFunction* ReturnFunction = nullptr;
 	if (!ReturnFunction)
 	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_GetDexterity_Statics::FuncParams);
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_GetCharacterData_Statics::FuncParams);
 	}
 	return ReturnFunction;
 }
-DEFINE_FUNCTION(AOWSCharacter::execGetDexterity)
+DEFINE_FUNCTION(AOWSCharacter::execGetCharacterData)
 {
+	P_GET_STRUCT_REF(FCharacterData,Z_Param_Out_OutCharacterData);
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	*(float*)Z_Param__Result=P_THIS->GetDexterity();
+	P_THIS->GetCharacterData(Z_Param_Out_OutCharacterData);
 	P_NATIVE_END;
 }
-// End Class AOWSCharacter Function GetDexterity
+// End Class AOWSCharacter Function GetCharacterData
 
-// Begin Class AOWSCharacter Function GetHealth
-struct Z_Construct_UFunction_AOWSCharacter_GetHealth_Statics
+// Begin Class AOWSCharacter Function GetCharacterStats
+struct Z_Construct_UFunction_AOWSCharacter_GetCharacterStats_Statics
 {
-	struct OWSCharacter_eventGetHealth_Parms
+	struct OWSCharacter_eventGetCharacterStats_Parms
 	{
-		float ReturnValue;
+		FCharacterStats OutCharacterStats;
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Stats" },
+		{ "Category", "OWS|Character" },
 		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_OutCharacterStats;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AOWSCharacter_GetHealth_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventGetHealth_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSCharacter_GetHealth_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_GetHealth_Statics::NewProp_ReturnValue,
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AOWSCharacter_GetCharacterStats_Statics::NewProp_OutCharacterStats = { "OutCharacterStats", nullptr, (EPropertyFlags)0x0010000000000180, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventGetCharacterStats_Parms, OutCharacterStats), Z_Construct_UScriptStruct_FCharacterStats, METADATA_PARAMS(0, nullptr) }; // 3500993001
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSCharacter_GetCharacterStats_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_GetCharacterStats_Statics::NewProp_OutCharacterStats,
 };
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetHealth_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_GetHealth_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "GetHealth", nullptr, nullptr, Z_Construct_UFunction_AOWSCharacter_GetHealth_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetHealth_Statics::PropPointers), sizeof(Z_Construct_UFunction_AOWSCharacter_GetHealth_Statics::OWSCharacter_eventGetHealth_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetHealth_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_GetHealth_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UFunction_AOWSCharacter_GetHealth_Statics::OWSCharacter_eventGetHealth_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_AOWSCharacter_GetHealth()
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetCharacterStats_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_GetCharacterStats_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "GetCharacterStats", nullptr, nullptr, Z_Construct_UFunction_AOWSCharacter_GetCharacterStats_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetCharacterStats_Statics::PropPointers), sizeof(Z_Construct_UFunction_AOWSCharacter_GetCharacterStats_Statics::OWSCharacter_eventGetCharacterStats_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54420401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetCharacterStats_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_GetCharacterStats_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_AOWSCharacter_GetCharacterStats_Statics::OWSCharacter_eventGetCharacterStats_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_AOWSCharacter_GetCharacterStats()
 {
 	static UFunction* ReturnFunction = nullptr;
 	if (!ReturnFunction)
 	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_GetHealth_Statics::FuncParams);
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_GetCharacterStats_Statics::FuncParams);
 	}
 	return ReturnFunction;
 }
-DEFINE_FUNCTION(AOWSCharacter::execGetHealth)
+DEFINE_FUNCTION(AOWSCharacter::execGetCharacterStats)
 {
+	P_GET_STRUCT_REF(FCharacterStats,Z_Param_Out_OutCharacterStats);
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	*(float*)Z_Param__Result=P_THIS->GetHealth();
+	P_THIS->GetCharacterStats(Z_Param_Out_OutCharacterStats);
 	P_NATIVE_END;
 }
-// End Class AOWSCharacter Function GetHealth
+// End Class AOWSCharacter Function GetCharacterStats
 
-// Begin Class AOWSCharacter Function GetIntelligence
-struct Z_Construct_UFunction_AOWSCharacter_GetIntelligence_Statics
+// Begin Class AOWSCharacter Function GetInventoryData
+struct Z_Construct_UFunction_AOWSCharacter_GetInventoryData_Statics
 {
-	struct OWSCharacter_eventGetIntelligence_Parms
+	struct OWSCharacter_eventGetInventoryData_Parms
 	{
-		float ReturnValue;
+		TArray<FInventoryData> ReturnValue;
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Stats" },
+		{ "Category", "OWS|Character" },
 		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_ReturnValue_Inner;
+	static const UECodeGen_Private::FArrayPropertyParams NewProp_ReturnValue;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AOWSCharacter_GetIntelligence_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventGetIntelligence_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSCharacter_GetIntelligence_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_GetIntelligence_Statics::NewProp_ReturnValue,
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AOWSCharacter_GetInventoryData_Statics::NewProp_ReturnValue_Inner = { "ReturnValue", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FInventoryData, METADATA_PARAMS(0, nullptr) }; // 2983649378
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_AOWSCharacter_GetInventoryData_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventGetInventoryData_Parms, ReturnValue), EArrayPropertyFlags::None, METADATA_PARAMS(0, nullptr) }; // 2983649378
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSCharacter_GetInventoryData_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_GetInventoryData_Statics::NewProp_ReturnValue_Inner,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_GetInventoryData_Statics::NewProp_ReturnValue,
 };
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetIntelligence_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_GetIntelligence_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "GetIntelligence", nullptr, nullptr, Z_Construct_UFunction_AOWSCharacter_GetIntelligence_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetIntelligence_Statics::PropPointers), sizeof(Z_Construct_UFunction_AOWSCharacter_GetIntelligence_Statics::OWSCharacter_eventGetIntelligence_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetIntelligence_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_GetIntelligence_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UFunction_AOWSCharacter_GetIntelligence_Statics::OWSCharacter_eventGetIntelligence_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_AOWSCharacter_GetIntelligence()
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetInventoryData_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_GetInventoryData_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "GetInventoryData", nullptr, nullptr, Z_Construct_UFunction_AOWSCharacter_GetInventoryData_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetInventoryData_Statics::PropPointers), sizeof(Z_Construct_UFunction_AOWSCharacter_GetInventoryData_Statics::OWSCharacter_eventGetInventoryData_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetInventoryData_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_GetInventoryData_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_AOWSCharacter_GetInventoryData_Statics::OWSCharacter_eventGetInventoryData_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_AOWSCharacter_GetInventoryData()
 {
 	static UFunction* ReturnFunction = nullptr;
 	if (!ReturnFunction)
 	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_GetIntelligence_Statics::FuncParams);
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_GetInventoryData_Statics::FuncParams);
 	}
 	return ReturnFunction;
 }
-DEFINE_FUNCTION(AOWSCharacter::execGetIntelligence)
+DEFINE_FUNCTION(AOWSCharacter::execGetInventoryData)
 {
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	*(float*)Z_Param__Result=P_THIS->GetIntelligence();
+	*(TArray<FInventoryData>*)Z_Param__Result=P_THIS->GetInventoryData();
 	P_NATIVE_END;
 }
-// End Class AOWSCharacter Function GetIntelligence
+// End Class AOWSCharacter Function GetInventoryData
 
-// Begin Class AOWSCharacter Function GetLuck
-struct Z_Construct_UFunction_AOWSCharacter_GetLuck_Statics
+// Begin Class AOWSCharacter Function OnRep_CharacterData
+struct Z_Construct_UFunction_AOWSCharacter_OnRep_CharacterData_Statics
 {
-	struct OWSCharacter_eventGetLuck_Parms
-	{
-		float ReturnValue;
-	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Stats" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// OnRep Functions\n" },
+#endif
 		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "OnRep Functions" },
+#endif
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_ReturnValue;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AOWSCharacter_GetLuck_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventGetLuck_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSCharacter_GetLuck_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_GetLuck_Statics::NewProp_ReturnValue,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetLuck_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_GetLuck_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "GetLuck", nullptr, nullptr, Z_Construct_UFunction_AOWSCharacter_GetLuck_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetLuck_Statics::PropPointers), sizeof(Z_Construct_UFunction_AOWSCharacter_GetLuck_Statics::OWSCharacter_eventGetLuck_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetLuck_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_GetLuck_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UFunction_AOWSCharacter_GetLuck_Statics::OWSCharacter_eventGetLuck_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_AOWSCharacter_GetLuck()
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_OnRep_CharacterData_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "OnRep_CharacterData", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_OnRep_CharacterData_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_OnRep_CharacterData_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_AOWSCharacter_OnRep_CharacterData()
 {
 	static UFunction* ReturnFunction = nullptr;
 	if (!ReturnFunction)
 	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_GetLuck_Statics::FuncParams);
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_OnRep_CharacterData_Statics::FuncParams);
 	}
 	return ReturnFunction;
 }
-DEFINE_FUNCTION(AOWSCharacter::execGetLuck)
+DEFINE_FUNCTION(AOWSCharacter::execOnRep_CharacterData)
 {
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	*(float*)Z_Param__Result=P_THIS->GetLuck();
+	P_THIS->OnRep_CharacterData();
 	P_NATIVE_END;
 }
-// End Class AOWSCharacter Function GetLuck
+// End Class AOWSCharacter Function OnRep_CharacterData
 
-// Begin Class AOWSCharacter Function GetMana
-struct Z_Construct_UFunction_AOWSCharacter_GetMana_Statics
+// Begin Class AOWSCharacter Function OnRep_CharacterStats
+struct Z_Construct_UFunction_AOWSCharacter_OnRep_CharacterStats_Statics
 {
-	struct OWSCharacter_eventGetMana_Parms
-	{
-		float ReturnValue;
-	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Stats" },
 		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_ReturnValue;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AOWSCharacter_GetMana_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventGetMana_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSCharacter_GetMana_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_GetMana_Statics::NewProp_ReturnValue,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetMana_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_GetMana_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "GetMana", nullptr, nullptr, Z_Construct_UFunction_AOWSCharacter_GetMana_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetMana_Statics::PropPointers), sizeof(Z_Construct_UFunction_AOWSCharacter_GetMana_Statics::OWSCharacter_eventGetMana_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetMana_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_GetMana_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UFunction_AOWSCharacter_GetMana_Statics::OWSCharacter_eventGetMana_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_AOWSCharacter_GetMana()
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_OnRep_CharacterStats_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "OnRep_CharacterStats", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_OnRep_CharacterStats_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_OnRep_CharacterStats_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_AOWSCharacter_OnRep_CharacterStats()
 {
 	static UFunction* ReturnFunction = nullptr;
 	if (!ReturnFunction)
 	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_GetMana_Statics::FuncParams);
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_OnRep_CharacterStats_Statics::FuncParams);
 	}
 	return ReturnFunction;
 }
-DEFINE_FUNCTION(AOWSCharacter::execGetMana)
+DEFINE_FUNCTION(AOWSCharacter::execOnRep_CharacterStats)
 {
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	*(float*)Z_Param__Result=P_THIS->GetMana();
+	P_THIS->OnRep_CharacterStats();
 	P_NATIVE_END;
 }
-// End Class AOWSCharacter Function GetMana
+// End Class AOWSCharacter Function OnRep_CharacterStats
 
-// Begin Class AOWSCharacter Function GetStamina
-struct Z_Construct_UFunction_AOWSCharacter_GetStamina_Statics
+// Begin Class AOWSCharacter Function OnRep_InventoryData
+struct Z_Construct_UFunction_AOWSCharacter_OnRep_InventoryData_Statics
 {
-	struct OWSCharacter_eventGetStamina_Parms
-	{
-		float ReturnValue;
-	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Stats" },
 		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_ReturnValue;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AOWSCharacter_GetStamina_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventGetStamina_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSCharacter_GetStamina_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_GetStamina_Statics::NewProp_ReturnValue,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetStamina_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_GetStamina_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "GetStamina", nullptr, nullptr, Z_Construct_UFunction_AOWSCharacter_GetStamina_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetStamina_Statics::PropPointers), sizeof(Z_Construct_UFunction_AOWSCharacter_GetStamina_Statics::OWSCharacter_eventGetStamina_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetStamina_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_GetStamina_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UFunction_AOWSCharacter_GetStamina_Statics::OWSCharacter_eventGetStamina_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_AOWSCharacter_GetStamina()
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_OnRep_InventoryData_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "OnRep_InventoryData", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_OnRep_InventoryData_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_OnRep_InventoryData_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_AOWSCharacter_OnRep_InventoryData()
 {
 	static UFunction* ReturnFunction = nullptr;
 	if (!ReturnFunction)
 	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_GetStamina_Statics::FuncParams);
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_OnRep_InventoryData_Statics::FuncParams);
 	}
 	return ReturnFunction;
 }
-DEFINE_FUNCTION(AOWSCharacter::execGetStamina)
+DEFINE_FUNCTION(AOWSCharacter::execOnRep_InventoryData)
 {
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	*(float*)Z_Param__Result=P_THIS->GetStamina();
+	P_THIS->OnRep_InventoryData();
 	P_NATIVE_END;
 }
-// End Class AOWSCharacter Function GetStamina
+// End Class AOWSCharacter Function OnRep_InventoryData
 
-// Begin Class AOWSCharacter Function GetStrength
-struct Z_Construct_UFunction_AOWSCharacter_GetStrength_Statics
+// Begin Class AOWSCharacter Function Server_Jump
+static const FName NAME_AOWSCharacter_Server_Jump = FName(TEXT("Server_Jump"));
+void AOWSCharacter::Server_Jump()
 {
-	struct OWSCharacter_eventGetStrength_Parms
-	{
-		float ReturnValue;
-	};
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Stats" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_ReturnValue;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AOWSCharacter_GetStrength_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventGetStrength_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSCharacter_GetStrength_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_GetStrength_Statics::NewProp_ReturnValue,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetStrength_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_GetStrength_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "GetStrength", nullptr, nullptr, Z_Construct_UFunction_AOWSCharacter_GetStrength_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetStrength_Statics::PropPointers), sizeof(Z_Construct_UFunction_AOWSCharacter_GetStrength_Statics::OWSCharacter_eventGetStrength_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetStrength_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_GetStrength_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UFunction_AOWSCharacter_GetStrength_Statics::OWSCharacter_eventGetStrength_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_AOWSCharacter_GetStrength()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_GetStrength_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(AOWSCharacter::execGetStrength)
-{
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	*(float*)Z_Param__Result=P_THIS->GetStrength();
-	P_NATIVE_END;
-}
-// End Class AOWSCharacter Function GetStrength
-
-// Begin Class AOWSCharacter Function GetWisdom
-struct Z_Construct_UFunction_AOWSCharacter_GetWisdom_Statics
-{
-	struct OWSCharacter_eventGetWisdom_Parms
-	{
-		float ReturnValue;
-	};
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Stats" },
-		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_ReturnValue;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AOWSCharacter_GetWisdom_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventGetWisdom_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSCharacter_GetWisdom_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_GetWisdom_Statics::NewProp_ReturnValue,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetWisdom_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_GetWisdom_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "GetWisdom", nullptr, nullptr, Z_Construct_UFunction_AOWSCharacter_GetWisdom_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetWisdom_Statics::PropPointers), sizeof(Z_Construct_UFunction_AOWSCharacter_GetWisdom_Statics::OWSCharacter_eventGetWisdom_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_GetWisdom_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_GetWisdom_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UFunction_AOWSCharacter_GetWisdom_Statics::OWSCharacter_eventGetWisdom_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_AOWSCharacter_GetWisdom()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_GetWisdom_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(AOWSCharacter::execGetWisdom)
-{
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	*(float*)Z_Param__Result=P_THIS->GetWisdom();
-	P_NATIVE_END;
-}
-// End Class AOWSCharacter Function GetWisdom
-
-// Begin Class AOWSCharacter Function OnRep_CustomCharacterData
-static const FName NAME_AOWSCharacter_OnRep_CustomCharacterData = FName(TEXT("OnRep_CustomCharacterData"));
-void AOWSCharacter::OnRep_CustomCharacterData()
-{
-	UFunction* Func = FindFunctionChecked(NAME_AOWSCharacter_OnRep_CustomCharacterData);
+	UFunction* Func = FindFunctionChecked(NAME_AOWSCharacter_Server_Jump);
 	ProcessEvent(Func,NULL);
 }
-struct Z_Construct_UFunction_AOWSCharacter_OnRep_CustomCharacterData_Statics
+struct Z_Construct_UFunction_AOWSCharacter_Server_Jump_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Replication" },
 		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_OnRep_CustomCharacterData_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "OnRep_CustomCharacterData", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08020800, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_OnRep_CustomCharacterData_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_OnRep_CustomCharacterData_Statics::Function_MetaDataParams) };
-UFunction* Z_Construct_UFunction_AOWSCharacter_OnRep_CustomCharacterData()
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_Server_Jump_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "Server_Jump", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x80220CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_Server_Jump_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_Server_Jump_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_AOWSCharacter_Server_Jump()
 {
 	static UFunction* ReturnFunction = nullptr;
 	if (!ReturnFunction)
 	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_OnRep_CustomCharacterData_Statics::FuncParams);
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_Server_Jump_Statics::FuncParams);
 	}
 	return ReturnFunction;
 }
-// End Class AOWSCharacter Function OnRep_CustomCharacterData
+DEFINE_FUNCTION(AOWSCharacter::execServer_Jump)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	if (!P_THIS->Server_Jump_Validate())
+	{
+		RPC_ValidateFailed(TEXT("Server_Jump_Validate"));
+		return;
+	}
+	P_THIS->Server_Jump_Implementation();
+	P_NATIVE_END;
+}
+// End Class AOWSCharacter Function Server_Jump
+
+// Begin Class AOWSCharacter Function Server_Move
+struct OWSCharacter_eventServer_Move_Parms
+{
+	FVector_NetQuantize NewLocation;
+};
+static const FName NAME_AOWSCharacter_Server_Move = FName(TEXT("Server_Move"));
+void AOWSCharacter::Server_Move(FVector_NetQuantize NewLocation)
+{
+	OWSCharacter_eventServer_Move_Parms Parms;
+	Parms.NewLocation=NewLocation;
+	UFunction* Func = FindFunctionChecked(NAME_AOWSCharacter_Server_Move);
+	ProcessEvent(Func,&Parms);
+}
+struct Z_Construct_UFunction_AOWSCharacter_Server_Move_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// RPC function to move the player on the server\n" },
+#endif
+		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "RPC function to move the player on the server" },
+#endif
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FStructPropertyParams NewProp_NewLocation;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AOWSCharacter_Server_Move_Statics::NewProp_NewLocation = { "NewLocation", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventServer_Move_Parms, NewLocation), Z_Construct_UScriptStruct_FVector_NetQuantize, METADATA_PARAMS(0, nullptr) }; // 1723029535
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSCharacter_Server_Move_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_Server_Move_Statics::NewProp_NewLocation,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_Server_Move_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_Server_Move_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "Server_Move", nullptr, nullptr, Z_Construct_UFunction_AOWSCharacter_Server_Move_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_Server_Move_Statics::PropPointers), sizeof(OWSCharacter_eventServer_Move_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x80220CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_Server_Move_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_Server_Move_Statics::Function_MetaDataParams) };
+static_assert(sizeof(OWSCharacter_eventServer_Move_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_AOWSCharacter_Server_Move()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_Server_Move_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AOWSCharacter::execServer_Move)
+{
+	P_GET_STRUCT(FVector_NetQuantize,Z_Param_NewLocation);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	if (!P_THIS->Server_Move_Validate(Z_Param_NewLocation))
+	{
+		RPC_ValidateFailed(TEXT("Server_Move_Validate"));
+		return;
+	}
+	P_THIS->Server_Move_Implementation(Z_Param_NewLocation);
+	P_NATIVE_END;
+}
+// End Class AOWSCharacter Function Server_Move
+
+// Begin Class AOWSCharacter Function UpdateCharacterData
+struct OWSCharacter_eventUpdateCharacterData_Parms
+{
+	FCharacterData InCharacterData;
+	TArray<FInventoryData> InInventoryData;
+	FCharacterStats InCharacterStats;
+};
+static const FName NAME_AOWSCharacter_UpdateCharacterData = FName(TEXT("UpdateCharacterData"));
+void AOWSCharacter::UpdateCharacterData(FCharacterData const& InCharacterData, TArray<FInventoryData> const& InInventoryData, FCharacterStats const& InCharacterStats)
+{
+	OWSCharacter_eventUpdateCharacterData_Parms Parms;
+	Parms.InCharacterData=InCharacterData;
+	Parms.InInventoryData=InInventoryData;
+	Parms.InCharacterStats=InCharacterStats;
+	UFunction* Func = FindFunctionChecked(NAME_AOWSCharacter_UpdateCharacterData);
+	ProcessEvent(Func,&Parms);
+}
+struct Z_Construct_UFunction_AOWSCharacter_UpdateCharacterData_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//Main function to update character values - Server Side Only\n" },
+#endif
+		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Main function to update character values - Server Side Only" },
+#endif
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_InCharacterData_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_InInventoryData_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_InCharacterStats_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FStructPropertyParams NewProp_InCharacterData;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_InInventoryData_Inner;
+	static const UECodeGen_Private::FArrayPropertyParams NewProp_InInventoryData;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_InCharacterStats;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AOWSCharacter_UpdateCharacterData_Statics::NewProp_InCharacterData = { "InCharacterData", nullptr, (EPropertyFlags)0x0010000008000082, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventUpdateCharacterData_Parms, InCharacterData), Z_Construct_UScriptStruct_FCharacterData, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InCharacterData_MetaData), NewProp_InCharacterData_MetaData) }; // 2676746057
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AOWSCharacter_UpdateCharacterData_Statics::NewProp_InInventoryData_Inner = { "InInventoryData", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FInventoryData, METADATA_PARAMS(0, nullptr) }; // 2983649378
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_AOWSCharacter_UpdateCharacterData_Statics::NewProp_InInventoryData = { "InInventoryData", nullptr, (EPropertyFlags)0x0010000008000082, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventUpdateCharacterData_Parms, InInventoryData), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InInventoryData_MetaData), NewProp_InInventoryData_MetaData) }; // 2983649378
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AOWSCharacter_UpdateCharacterData_Statics::NewProp_InCharacterStats = { "InCharacterStats", nullptr, (EPropertyFlags)0x0010000008000082, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSCharacter_eventUpdateCharacterData_Parms, InCharacterStats), Z_Construct_UScriptStruct_FCharacterStats, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InCharacterStats_MetaData), NewProp_InCharacterStats_MetaData) }; // 3500993001
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSCharacter_UpdateCharacterData_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_UpdateCharacterData_Statics::NewProp_InCharacterData,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_UpdateCharacterData_Statics::NewProp_InInventoryData_Inner,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_UpdateCharacterData_Statics::NewProp_InInventoryData,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSCharacter_UpdateCharacterData_Statics::NewProp_InCharacterStats,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_UpdateCharacterData_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSCharacter_UpdateCharacterData_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSCharacter, nullptr, "UpdateCharacterData", nullptr, nullptr, Z_Construct_UFunction_AOWSCharacter_UpdateCharacterData_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_UpdateCharacterData_Statics::PropPointers), sizeof(OWSCharacter_eventUpdateCharacterData_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x80220CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSCharacter_UpdateCharacterData_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSCharacter_UpdateCharacterData_Statics::Function_MetaDataParams) };
+static_assert(sizeof(OWSCharacter_eventUpdateCharacterData_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_AOWSCharacter_UpdateCharacterData()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSCharacter_UpdateCharacterData_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AOWSCharacter::execUpdateCharacterData)
+{
+	P_GET_STRUCT(FCharacterData,Z_Param_InCharacterData);
+	P_GET_TARRAY(FInventoryData,Z_Param_InInventoryData);
+	P_GET_STRUCT(FCharacterStats,Z_Param_InCharacterStats);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	if (!P_THIS->UpdateCharacterData_Validate(Z_Param_InCharacterData,Z_Param_InInventoryData,Z_Param_InCharacterStats))
+	{
+		RPC_ValidateFailed(TEXT("UpdateCharacterData_Validate"));
+		return;
+	}
+	P_THIS->UpdateCharacterData_Implementation(Z_Param_InCharacterData,Z_Param_InInventoryData,Z_Param_InCharacterStats);
+	P_NATIVE_END;
+}
+// End Class AOWSCharacter Function UpdateCharacterData
 
 // Begin Class AOWSCharacter
 void AOWSCharacter::StaticRegisterNativesAOWSCharacter()
 {
 	UClass* Class = AOWSCharacter::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
-		{ "GetCharacterID", &AOWSCharacter::execGetCharacterID },
-		{ "GetCharacterMesh", &AOWSCharacter::execGetCharacterMesh },
-		{ "GetCharacterName", &AOWSCharacter::execGetCharacterName },
-		{ "GetCharacterTexture", &AOWSCharacter::execGetCharacterTexture },
-		{ "GetDexterity", &AOWSCharacter::execGetDexterity },
-		{ "GetHealth", &AOWSCharacter::execGetHealth },
-		{ "GetIntelligence", &AOWSCharacter::execGetIntelligence },
-		{ "GetLuck", &AOWSCharacter::execGetLuck },
-		{ "GetMana", &AOWSCharacter::execGetMana },
-		{ "GetStamina", &AOWSCharacter::execGetStamina },
-		{ "GetStrength", &AOWSCharacter::execGetStrength },
-		{ "GetWisdom", &AOWSCharacter::execGetWisdom },
+		{ "Client_RejectMove", &AOWSCharacter::execClient_RejectMove },
+		{ "GetCharacterData", &AOWSCharacter::execGetCharacterData },
+		{ "GetCharacterStats", &AOWSCharacter::execGetCharacterStats },
+		{ "GetInventoryData", &AOWSCharacter::execGetInventoryData },
+		{ "OnRep_CharacterData", &AOWSCharacter::execOnRep_CharacterData },
+		{ "OnRep_CharacterStats", &AOWSCharacter::execOnRep_CharacterStats },
+		{ "OnRep_InventoryData", &AOWSCharacter::execOnRep_InventoryData },
+		{ "Server_Jump", &AOWSCharacter::execServer_Jump },
+		{ "Server_Move", &AOWSCharacter::execServer_Move },
+		{ "UpdateCharacterData", &AOWSCharacter::execUpdateCharacterData },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
@@ -884,65 +666,93 @@ struct Z_Construct_UClass_AOWSCharacter_Statics
 		{ "HideCategories", "Navigation" },
 		{ "IncludePath", "OWSCharacter.h" },
 		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
-		{ "ObjectInitializerConstructorDeclared", "" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CustomCharacterData_MetaData[] = {
-		{ "Category", "Character Customization" },
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CharacterData_MetaData[] = {
+		{ "Category", "OWS|Character" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//Replicated Variables\n" },
+#endif
+		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Replicated Variables" },
+#endif
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_InventoryData_MetaData[] = {
+		{ "Category", "OWS|Character" },
 		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CharacterStats_MetaData[] = {
-		{ "Category", "Stats" },
+		{ "Category", "OWS|Character" },
 		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GameplayTagsToUse_MetaData[] = {
-		{ "Category", "GameplayTags" },
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OnCharacterDataReceived_MetaData[] = {
+		{ "Category", "OWS|Character" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// Delegates - Blueprint\n" },
+#endif
+		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Delegates - Blueprint" },
+#endif
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OnInventoryDataReceived_MetaData[] = {
+		{ "Category", "OWS|Character" },
+		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OnCharacterStatsReceived_MetaData[] = {
+		{ "Category", "OWS|Character" },
 		{ "ModuleRelativePath", "Public/OWSCharacter.h" },
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FStructPropertyParams NewProp_CustomCharacterData;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_CharacterData;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_InventoryData_Inner;
+	static const UECodeGen_Private::FArrayPropertyParams NewProp_InventoryData;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_CharacterStats;
-	static const UECodeGen_Private::FStructPropertyParams NewProp_GameplayTagsToUse;
+	static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_OnCharacterDataReceived;
+	static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_OnInventoryDataReceived;
+	static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_OnCharacterStatsReceived;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_AOWSCharacter_GetCharacterID, "GetCharacterID" }, // 2214181571
-		{ &Z_Construct_UFunction_AOWSCharacter_GetCharacterMesh, "GetCharacterMesh" }, // 2046615135
-		{ &Z_Construct_UFunction_AOWSCharacter_GetCharacterName, "GetCharacterName" }, // 1120576668
-		{ &Z_Construct_UFunction_AOWSCharacter_GetCharacterTexture, "GetCharacterTexture" }, // 410901955
-		{ &Z_Construct_UFunction_AOWSCharacter_GetDexterity, "GetDexterity" }, // 3578518690
-		{ &Z_Construct_UFunction_AOWSCharacter_GetHealth, "GetHealth" }, // 3596976607
-		{ &Z_Construct_UFunction_AOWSCharacter_GetIntelligence, "GetIntelligence" }, // 3633358498
-		{ &Z_Construct_UFunction_AOWSCharacter_GetLuck, "GetLuck" }, // 3898045334
-		{ &Z_Construct_UFunction_AOWSCharacter_GetMana, "GetMana" }, // 2090658326
-		{ &Z_Construct_UFunction_AOWSCharacter_GetStamina, "GetStamina" }, // 2150479225
-		{ &Z_Construct_UFunction_AOWSCharacter_GetStrength, "GetStrength" }, // 641305586
-		{ &Z_Construct_UFunction_AOWSCharacter_GetWisdom, "GetWisdom" }, // 892863673
-		{ &Z_Construct_UFunction_AOWSCharacter_OnRep_CustomCharacterData, "OnRep_CustomCharacterData" }, // 940550377
+		{ &Z_Construct_UFunction_AOWSCharacter_Client_RejectMove, "Client_RejectMove" }, // 140356667
+		{ &Z_Construct_UFunction_AOWSCharacter_GetCharacterData, "GetCharacterData" }, // 347406624
+		{ &Z_Construct_UFunction_AOWSCharacter_GetCharacterStats, "GetCharacterStats" }, // 1620191961
+		{ &Z_Construct_UFunction_AOWSCharacter_GetInventoryData, "GetInventoryData" }, // 736995159
+		{ &Z_Construct_UFunction_AOWSCharacter_OnRep_CharacterData, "OnRep_CharacterData" }, // 974547810
+		{ &Z_Construct_UFunction_AOWSCharacter_OnRep_CharacterStats, "OnRep_CharacterStats" }, // 2747375158
+		{ &Z_Construct_UFunction_AOWSCharacter_OnRep_InventoryData, "OnRep_InventoryData" }, // 1198312294
+		{ &Z_Construct_UFunction_AOWSCharacter_Server_Jump, "Server_Jump" }, // 2109768420
+		{ &Z_Construct_UFunction_AOWSCharacter_Server_Move, "Server_Move" }, // 402022509
+		{ &Z_Construct_UFunction_AOWSCharacter_UpdateCharacterData, "UpdateCharacterData" }, // 2575419406
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
-	static const UECodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AOWSCharacter>::IsAbstract,
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AOWSCharacter_Statics::NewProp_CustomCharacterData = { "CustomCharacterData", nullptr, (EPropertyFlags)0x0010000000020025, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOWSCharacter, CustomCharacterData), Z_Construct_UScriptStruct_FCustomCharacterDataStruct, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CustomCharacterData_MetaData), NewProp_CustomCharacterData_MetaData) }; // 2876975285
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AOWSCharacter_Statics::NewProp_CharacterStats = { "CharacterStats", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOWSCharacter, CharacterStats), Z_Construct_UScriptStruct_FCharacterStats, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CharacterStats_MetaData), NewProp_CharacterStats_MetaData) }; // 417406361
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AOWSCharacter_Statics::NewProp_GameplayTagsToUse = { "GameplayTagsToUse", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOWSCharacter, GameplayTagsToUse), Z_Construct_UScriptStruct_FGameplayTagsToUse, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GameplayTagsToUse_MetaData), NewProp_GameplayTagsToUse_MetaData) }; // 2701483774
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AOWSCharacter_Statics::NewProp_CharacterData = { "CharacterData", "OnRep_CharacterData", (EPropertyFlags)0x0010000100020035, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOWSCharacter, CharacterData), Z_Construct_UScriptStruct_FCharacterData, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CharacterData_MetaData), NewProp_CharacterData_MetaData) }; // 2676746057
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AOWSCharacter_Statics::NewProp_InventoryData_Inner = { "InventoryData", nullptr, (EPropertyFlags)0x0000000000020000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FInventoryData, METADATA_PARAMS(0, nullptr) }; // 2983649378
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_AOWSCharacter_Statics::NewProp_InventoryData = { "InventoryData", "OnRep_InventoryData", (EPropertyFlags)0x0010000100020035, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOWSCharacter, InventoryData), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InventoryData_MetaData), NewProp_InventoryData_MetaData) }; // 2983649378
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AOWSCharacter_Statics::NewProp_CharacterStats = { "CharacterStats", "OnRep_CharacterStats", (EPropertyFlags)0x0010000100020035, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOWSCharacter, CharacterStats), Z_Construct_UScriptStruct_FCharacterStats, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CharacterStats_MetaData), NewProp_CharacterStats_MetaData) }; // 3500993001
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_AOWSCharacter_Statics::NewProp_OnCharacterDataReceived = { "OnCharacterDataReceived", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOWSCharacter, OnCharacterDataReceived), Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterDataReceivedDelegate__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnCharacterDataReceived_MetaData), NewProp_OnCharacterDataReceived_MetaData) }; // 2819759044
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_AOWSCharacter_Statics::NewProp_OnInventoryDataReceived = { "OnInventoryDataReceived", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOWSCharacter, OnInventoryDataReceived), Z_Construct_UDelegateFunction_OWSPlugin_OnInventoryDataReceivedDelegate__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnInventoryDataReceived_MetaData), NewProp_OnInventoryDataReceived_MetaData) }; // 1677698801
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_AOWSCharacter_Statics::NewProp_OnCharacterStatsReceived = { "OnCharacterStatsReceived", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOWSCharacter, OnCharacterStatsReceived), Z_Construct_UDelegateFunction_OWSPlugin_OnCharacterStatsReceivedDelegate__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnCharacterStatsReceived_MetaData), NewProp_OnCharacterStatsReceived_MetaData) }; // 3598862271
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AOWSCharacter_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOWSCharacter_Statics::NewProp_CustomCharacterData,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOWSCharacter_Statics::NewProp_CharacterData,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOWSCharacter_Statics::NewProp_InventoryData_Inner,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOWSCharacter_Statics::NewProp_InventoryData,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOWSCharacter_Statics::NewProp_CharacterStats,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOWSCharacter_Statics::NewProp_GameplayTagsToUse,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOWSCharacter_Statics::NewProp_OnCharacterDataReceived,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOWSCharacter_Statics::NewProp_OnInventoryDataReceived,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOWSCharacter_Statics::NewProp_OnCharacterStatsReceived,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AOWSCharacter_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_AOWSCharacter_Statics::DependentSingletons[])() = {
-	(UObject* (*)())Z_Construct_UClass_AOWSCharacterBase,
+	(UObject* (*)())Z_Construct_UClass_ACharacter,
 	(UObject* (*)())Z_Construct_UPackage__Script_OWSPlugin,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AOWSCharacter_Statics::DependentSingletons) < 16);
-const UECodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_AOWSCharacter_Statics::InterfaceParams[] = {
-	{ Z_Construct_UClass_UGenericTeamAgentInterface_NoRegister, (int32)VTABLE_OFFSET(AOWSCharacter, IGenericTeamAgentInterface), false },  // 1380835789
-};
 const UECodeGen_Private::FClassParams Z_Construct_UClass_AOWSCharacter_Statics::ClassParams = {
 	&AOWSCharacter::StaticClass,
 	"Game",
@@ -950,11 +760,11 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_AOWSCharacter_Statics::
 	DependentSingletons,
 	FuncInfo,
 	Z_Construct_UClass_AOWSCharacter_Statics::PropPointers,
-	InterfaceParams,
+	nullptr,
 	UE_ARRAY_COUNT(DependentSingletons),
 	UE_ARRAY_COUNT(FuncInfo),
 	UE_ARRAY_COUNT(Z_Construct_UClass_AOWSCharacter_Statics::PropPointers),
-	UE_ARRAY_COUNT(InterfaceParams),
+	0,
 	0x009000A4u,
 	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AOWSCharacter_Statics::Class_MetaDataParams), Z_Construct_UClass_AOWSCharacter_Statics::Class_MetaDataParams)
 };
@@ -972,9 +782,13 @@ template<> OWSPLUGIN_API UClass* StaticClass<AOWSCharacter>()
 }
 void AOWSCharacter::ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const
 {
-	static const FName Name_CustomCharacterData(TEXT("CustomCharacterData"));
+	static const FName Name_CharacterData(TEXT("CharacterData"));
+	static const FName Name_InventoryData(TEXT("InventoryData"));
+	static const FName Name_CharacterStats(TEXT("CharacterStats"));
 	const bool bIsValid = true
-		&& Name_CustomCharacterData == ClassReps[(int32)ENetFields_Private::CustomCharacterData].Property->GetFName();
+		&& Name_CharacterData == ClassReps[(int32)ENetFields_Private::CharacterData].Property->GetFName()
+		&& Name_InventoryData == ClassReps[(int32)ENetFields_Private::InventoryData].Property->GetFName()
+		&& Name_CharacterStats == ClassReps[(int32)ENetFields_Private::CharacterStats].Property->GetFName();
 	checkf(bIsValid, TEXT("UHT Generated Rep Indices do not match runtime populated Rep Indices for properties in AOWSCharacter"));
 }
 DEFINE_VTABLE_PTR_HELPER_CTOR(AOWSCharacter);
@@ -984,18 +798,13 @@ AOWSCharacter::~AOWSCharacter() {}
 // Begin Registration
 struct Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_OWSCharacter_h_Statics
 {
-	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
-		{ FCustomCharacterDataStruct::StaticStruct, Z_Construct_UScriptStruct_FCustomCharacterDataStruct_Statics::NewStructOps, TEXT("CustomCharacterDataStruct"), &Z_Registration_Info_UScriptStruct_CustomCharacterDataStruct, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FCustomCharacterDataStruct), 2876975285U) },
-		{ FCharacterStats::StaticStruct, Z_Construct_UScriptStruct_FCharacterStats_Statics::NewStructOps, TEXT("CharacterStats"), &Z_Registration_Info_UScriptStruct_CharacterStats, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FCharacterStats), 417406361U) },
-		{ FGameplayTagsToUse::StaticStruct, Z_Construct_UScriptStruct_FGameplayTagsToUse_Statics::NewStructOps, TEXT("GameplayTagsToUse"), &Z_Registration_Info_UScriptStruct_GameplayTagsToUse, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FGameplayTagsToUse), 2701483774U) },
-	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AOWSCharacter, AOWSCharacter::StaticClass, TEXT("AOWSCharacter"), &Z_Registration_Info_UClass_AOWSCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AOWSCharacter), 2092381974U) },
+		{ Z_Construct_UClass_AOWSCharacter, AOWSCharacter::StaticClass, TEXT("AOWSCharacter"), &Z_Registration_Info_UClass_AOWSCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AOWSCharacter), 1672400880U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_OWSCharacter_h_406045515(TEXT("/Script/OWSPlugin"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_OWSCharacter_h_1359109024(TEXT("/Script/OWSPlugin"),
 	Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_OWSCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_OWSCharacter_h_Statics::ClassInfo),
-	Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_OWSCharacter_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_OWSCharacter_h_Statics::ScriptStructInfo),
+	nullptr, 0,
 	nullptr, 0);
 // End Registration
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

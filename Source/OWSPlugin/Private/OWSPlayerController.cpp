@@ -1,6 +1,8 @@
 #include "OWSPlayerController.h"
 #include "OWSCharacter.h"
 #include "OWSPlayerState.h"
+#include "DataTypes/OWSDataTypes.h"
+#include "GameFramework/Pawn.h"
 #include "OWSGameInstanceSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 #include "HttpModule.h"
@@ -14,8 +16,9 @@
 #include "InputAction.h"
 #include "InputMappingContext.h"
 
-
-DEFINE_LOG_CATEGORY(LogOWSPlayerController); // Define a log category
+// Define log category properly
+DECLARE_LOG_CATEGORY_EXTERN(LogOWSPlayerController, Log, All);
+DEFINE_LOG_CATEGORY(LogOWSPlayerController);
 
 AOWSPlayerController::AOWSPlayerController()
 {
@@ -71,7 +74,7 @@ void AOWSPlayerController::SetupInputComponent()
     {
         if (MoveInputAction)
         {
-            EnhancedInputComponent->BindAction(MoveInputAction, ETriggerEvent::Triggered, this, &AOWSPlayerController::Move);
+            EnhancedInputComponent->BindAction(MoveInputAction, ETriggerEvent::Triggered, this, &ThisClass::Move);
             UE_LOG(LogOWSPlayerController, Verbose, TEXT("AOWSPlayerController::SetupInputComponent Move Action Bound"));
         }
         else
@@ -81,7 +84,7 @@ void AOWSPlayerController::SetupInputComponent()
 
         if (JumpInputAction)
         {
-            EnhancedInputComponent->BindAction(JumpInputAction, ETriggerEvent::Started, this, &AOWSPlayerController::Jump);
+            EnhancedInputComponent->BindAction(JumpInputAction, ETriggerEvent::Started, this, &ThisClass::Jump);
             UE_LOG(LogOWSPlayerController, Verbose, TEXT("AOWSPlayerController::SetupInputComponent Jump Action Bound"));
         }
         else
@@ -91,7 +94,7 @@ void AOWSPlayerController::SetupInputComponent()
 
         if (LookInputAction)
         {
-            EnhancedInputComponent->BindAction(LookInputAction, ETriggerEvent::Triggered, this, &AOWSPlayerController::Look);
+            EnhancedInputComponent->BindAction(LookInputAction, ETriggerEvent::Triggered, this, &ThisClass::Look);
             UE_LOG(LogOWSPlayerController, Verbose, TEXT("AOWSPlayerController::SetupInputComponent Look Action Bound"));
         }
         else
@@ -103,41 +106,39 @@ void AOWSPlayerController::SetupInputComponent()
 
 void AOWSPlayerController::Move(const FInputActionValue& Value)
 {
-    if (Controller != nullptr)
+    // We don't need Controller variable, we already are a controller
+    FVector2D MoveValue = Value.Get<FVector2D>();
+
+    if (MoveValue.Y != 0.0f)
     {
-        FVector2D MoveValue = Value.Get<FVector2D>();
+        const FRotator Rotation = GetControlRotation();
+        const FRotator YawRotation(0, Rotation.Yaw, 0);
+        const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 
-        if (MoveValue.Y != 0.0f)
+        if (GetPawn())
         {
-            const FRotator Rotation = Controller->GetControlRotation();
-            const FRotator YawRotation(0, Rotation.Yaw, 0);
-            const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
-
-            if (GetPawn())
-            {
-                GetPawn()->AddMovementInput(ForwardDirection, MoveValue.Y);
-                Server_Move(GetPawn()->GetActorLocation()); // Update server with new position
-            }
-            else
-            {
-                UE_LOG(LogOWSPlayerController, Warning, TEXT("AOWSPlayerController::Move Pawn is NULL"));
-            }
+            GetPawn()->AddMovementInput(ForwardDirection, MoveValue.Y);
+            Server_Move(GetPawn()->GetActorLocation()); // Update server with new position
         }
-        if (MoveValue.X != 0.0f)
+        else
         {
-            const FRotator Rotation = Controller->GetControlRotation();
-            const FRotator YawRotation(0, Rotation.Yaw, 0);
-            const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
+            UE_LOG(LogOWSPlayerController, Warning, TEXT("AOWSPlayerController::Move Pawn is NULL"));
+        }
+    }
+    if (MoveValue.X != 0.0f)
+    {
+        const FRotator Rotation = GetControlRotation();
+        const FRotator YawRotation(0, Rotation.Yaw, 0);
+        const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 
-            if (GetPawn())
-            {
-                GetPawn()->AddMovementInput(RightDirection, MoveValue.X);
-                Server_Move(GetPawn()->GetActorLocation()); // Update server with new position
-            }
-            else
-            {
-                UE_LOG(LogOWSPlayerController, Warning, TEXT("AOWSPlayerController::Move Pawn is NULL"));
-            }
+        if (GetPawn())
+        {
+            GetPawn()->AddMovementInput(RightDirection, MoveValue.X);
+            Server_Move(GetPawn()->GetActorLocation()); // Update server with new position
+        }
+        else
+        {
+            UE_LOG(LogOWSPlayerController, Warning, TEXT("AOWSPlayerController::Move Pawn is NULL"));
         }
     }
 }
@@ -163,11 +164,9 @@ void AOWSPlayerController::Look(const FInputActionValue& Value)
 {
     FVector2D LookAxisVector = Value.Get<FVector2D>();
 
-    if (Controller != nullptr)
-    {
-        AddYawInput(LookAxisVector.X);
-        AddPitchInput(LookAxisVector.Y);
-    }
+    // We already are a controller
+    AddYawInput(LookAxisVector.X);
+    AddPitchInput(LookAxisVector.Y);
 }
 
 
@@ -222,23 +221,23 @@ void AOWSPlayerController::OnGetCharacterDataResponseReceived(FHttpRequestPtr Re
         if (FJsonSerializer::Deserialize(Reader, ResponseJson))
         {
             FCharacterData CharData;
-            if (FJsonObjectConverter::JsonObjectToUStruct(ResponseJson->GetObjectField("CharacterData"), &CharData, 0, 0))
+            if (FJsonObjectConverter::JsonObjectToUStruct(ResponseJson->GetObjectField("CharacterData").ToSharedRef(), &CharData, 0, 0))
             {
                 TArray<FInventoryData> InvData;
                 if (FJsonObjectConverter::JsonArrayToUStruct(ResponseJson->GetArrayField("InventoryData"), &InvData, 0, 0))
                 {
                     FCharacterStats CharStats;
-                    if (FJsonObjectConverter::JsonObjectToUStruct(ResponseJson->GetObjectField("CharacterStats"), &CharStats, 0, 0))
+                    if (FJsonObjectConverter::JsonObjectToUStruct(ResponseJson->GetObjectField("CharacterStats").ToSharedRef(), &CharStats, 0, 0))
                     {
                         // Character Spawning and Possession (Simplified)
                         FActorSpawnParameters SpawnParams;
                         SpawnParams.Owner = this;
                         SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-                        FVector SpawnLocation = FVector(CharData.X, CharData.Y, CharData.Z);
-                        FRotator SpawnRotation = FRotator(CharData.RX, CharData.RY, CharData.RZ);
+                        FVector SpawnLoc = FVector(CharData.X, CharData.Y, CharData.Z);
+                        FRotator SpawnRot = FRotator(CharData.RX, CharData.RY, CharData.RZ);
 
                         //  Use the CharacterClass from the PlayerController
-                        AOWSCharacter* NewCharacter = GetWorld()->SpawnActor<AOWSCharacter>(CharacterClass, SpawnLocation, SpawnRotation, SpawnParams);
+                        AOWSCharacter* NewCharacter = GetWorld()->SpawnActor<AOWSCharacter>(CharacterClass, SpawnLoc, SpawnRot, SpawnParams);
                         if (NewCharacter)
                         {
                             // Update character with received data (IMPORTANT: This now uses delegates)
@@ -307,11 +306,12 @@ void AOWSPlayerController::Server_LoginUser_Implementation(const FString& Userna
     {
         if (UOWSGameInstanceSubsystem* OWSGameInstanceSubsystem = GameInstance->GetSubsystem<UOWSGameInstanceSubsystem>())
         {
-            //IOWSAuthenticationInterface* AuthInterface = &OWSGameInstanceSubsystem->GetAuthInterface();
             //Use the interface object directly
             if (OWSGameInstanceSubsystem)
             {
-                IOWSAuthenticationInterface::Execute_Login(OWSGameInstanceSubsystem, Username, Password, IOWSAuthenticationInterface::FLoginDelegate::CreateUObject(this, &AOWSPlayerController::OnLoginComplete));
+                FLoginDelegate LoginCallback;
+                LoginCallback.BindDynamic(this, &AOWSPlayerController::OnLoginComplete);
+                IOWSAuthenticationInterface::Execute_Login(OWSGameInstanceSubsystem, Username, Password, LoginCallback);
             }
             else
             {
@@ -373,10 +373,11 @@ void AOWSPlayerController::Server_RegisterUser_Implementation(const FString& Use
     {
         if (UOWSGameInstanceSubsystem* OWSGameInstanceSubsystem = GameInstance->GetSubsystem<UOWSGameInstanceSubsystem>())
         {
-            //IOWSAuthenticationInterface* AuthInterface = &OWSGameInstanceSubsystem->GetAuthInterface();
             if (OWSGameInstanceSubsystem)
             {
-                IOWSAuthenticationInterface::Execute_Register(OWSGameInstanceSubsystem, Username, Password, Email, IOWSAuthenticationInterface::FRegisterDelegate::CreateUObject(this, &AOWSPlayerController::OnRegisterComplete));
+                FRegisterDelegate RegisterCallback;
+                RegisterCallback.BindDynamic(this, &AOWSPlayerController::OnRegisterComplete);
+                IOWSAuthenticationInterface::Execute_Register(OWSGameInstanceSubsystem, Username, Password, Email, RegisterCallback);
             }
             else
             {

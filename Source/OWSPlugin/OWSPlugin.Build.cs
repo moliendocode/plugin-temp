@@ -19,7 +19,8 @@ public class OWSPlugin : ModuleRules
         PrivateIncludePaths.AddRange(
             new string[] {
 				// ... add other private include paths required here ...
-			}
+                ModuleDirectory + "/Private"
+            }
             );
 
 

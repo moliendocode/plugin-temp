@@ -3,21 +3,30 @@
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
 #include "Authentication/OWSAuthenticationInterface.h"
+#include "InputActionValue.h"
+#include "Interfaces/IHttpRequest.h"  // Specific HTTP request interface
+#include "Interfaces/IHttpResponse.h" // Specific HTTP response interface
+#include "Templates/SharedPointer.h"   // For TSharedPtr
+#include "Delegates/Delegate.h"
 #include "OWSPlayerController.generated.h"
 
 class AOWSCharacter;
 class UInputMappingContext;
 class UInputAction;
 
-// Forward declarations CORRECTAS para FHttpRequestPtr y FHttpResponsePtr:
-class FHttpRequestPtr;
-class FHttpResponsePtr;
-
+// Forward declarations for HTTP interfaces
+class IHttpRequest;
+class IHttpResponse;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnLoginSuccessDelegate);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE__OneParam(FOnLoginFailDelegate, const FString&, ErrorMessage);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnLoginFailDelegate, const FString&, ErrorMessage);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnRegisterSuccessDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnRegisterFailDelegate, const FString&, ErrorMessage);
+
+// Typedefs for smart pointers (optional, kept for clarity)
+using FHttpRequestPtr = TSharedPtr<IHttpRequest, ESPMode::ThreadSafe>;
+using FHttpResponsePtr = TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>;
+
 
 UCLASS()
 class OWSPLUGIN_API AOWSPlayerController : public APlayerController
@@ -40,8 +49,8 @@ public:
 
 	void OnLoginComplete(bool bSuccess, const FString& ErrorMessage);
 
-	UFUNCTION(Client, Reliable, Category = "OWS|Authentication") //Ahora si se usa
-		void Client_OnLoginComplete(bool bSuccess, const FString& ErrorMessage);
+	UFUNCTION(Client, Reliable, Category = "OWS|Authentication")
+	void Client_OnLoginComplete(bool bSuccess, const FString& ErrorMessage);
 	void Client_OnLoginComplete_Implementation(bool bSuccess, const FString& ErrorMessage);
 
 	UPROPERTY(BlueprintAssignable, Category = "OWS|Authentication")
@@ -60,8 +69,8 @@ public:
 
 	void OnRegisterComplete(bool bSuccess, const FString& ErrorMessage);
 
-	UFUNCTION(Client, Reliable, Category = "OWS|Authentication") //Ahora si se usa
-		void Client_OnRegisterComplete(bool bSuccess, const FString& ErrorMessage);
+	UFUNCTION(Client, Reliable, Category = "OWS|Authentication")
+	void Client_OnRegisterComplete(bool bSuccess, const FString& ErrorMessage);
 	void Client_OnRegisterComplete_Implementation(bool bSuccess, const FString& ErrorMessage);
 
 	UPROPERTY(BlueprintAssignable, Category = "OWS|Authentication")
@@ -75,18 +84,16 @@ public:
 	void Server_GetCharacterData(const FString& CharacterName);
 	void Server_GetCharacterData_Implementation(const FString& CharacterName);
 
-	UFUNCTION() // Ya no es BlueprintCallable
-		void OnGetCharacterDataResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
+	// SOLUCIÓN 2: Usar la sintaxis estándar de UE para HTTP callbacks
+	void OnGetCharacterDataResponseReceived(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded);
 
-	//Input
+	// Input
 	UFUNCTION(Server, Reliable, WithValidation)
 	void Server_Move(FVector_NetQuantize NewLocation);
 	void Server_Move_Implementation(FVector_NetQuantize NewLocation);
 	bool Server_Move_Validate(FVector_NetQuantize NewLocation);
 
-
 protected:
-
 	// Input
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "OWS|Input", meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UInputMappingContext> DefaultInputMappingContext;
@@ -104,7 +111,7 @@ protected:
 	void Jump();
 	void Look(const FInputActionValue& Value);
 
-	//Character Class para spawnear
+	// Character Class para spawnear
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "OWS|Character", meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<class AOWSCharacter> CharacterClass;
 };

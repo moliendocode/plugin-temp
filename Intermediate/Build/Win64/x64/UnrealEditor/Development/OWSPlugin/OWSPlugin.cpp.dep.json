@@ -1,0 +1,22 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\source\\owsplugin\\owsplugin.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\moliendo\\documents\\ue5\\engine\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.inclorderunreal5_3.h.pch",
+        "Includes": [
+            "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\owsplugin\\definitions.owsplugin.h",
+            "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\source\\owsplugin\\owsplugin.h",
+            "c:\\users\\moliendo\\documents\\ue5\\engine\\source\\runtime\\projects\\public\\interfaces\\ipluginmanager.h",
+            "c:\\users\\moliendo\\documents\\ue5\\engine\\source\\runtime\\projects\\public\\plugindescriptor.h",
+            "c:\\users\\moliendo\\documents\\ue5\\engine\\source\\runtime\\projects\\public\\custombuildsteps.h",
+            "c:\\users\\moliendo\\documents\\ue5\\engine\\source\\runtime\\projects\\public\\localizationdescriptor.h",
+            "c:\\users\\moliendo\\documents\\ue5\\engine\\source\\runtime\\projects\\public\\moduledescriptor.h",
+            "c:\\users\\moliendo\\documents\\ue5\\engine\\source\\runtime\\projects\\public\\plugindisalloweddescriptor.h",
+            "c:\\users\\moliendo\\documents\\ue5\\engine\\source\\runtime\\projects\\public\\pluginreferencedescriptor.h",
+            "c:\\users\\moliendo\\documents\\ue5\\engine\\source\\runtime\\projects\\public\\versescope.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

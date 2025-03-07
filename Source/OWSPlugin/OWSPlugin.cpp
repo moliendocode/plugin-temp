@@ -5,6 +5,7 @@
 #include "Interfaces/IPluginManager.h"
 
 // Define a log category for the entire plugin (optional, but good practice)
+DECLARE_LOG_CATEGORY_EXTERN(OWSPlugin, Log, All);
 DEFINE_LOG_CATEGORY(OWSPlugin);
 
 void FOWSPlugin::StartupModule()

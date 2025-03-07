@@ -1,0 +1,21 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.OWSPlugin.cpp.obj": [
+			"OWSAuthenticationInterface.gen.cpp.obj",
+			"OWSCharacter.gen.cpp.obj",
+			"OWSDataTypes.gen.cpp.obj",
+			"OWSGameInstanceSubsystem.gen.cpp.obj",
+			"OWSPlayerController.gen.cpp.obj",
+			"OWSPlayerState.gen.cpp.obj",
+			"OWSPlugin.init.gen.cpp.obj",
+			"PerModuleInline.gen.cpp.obj",
+			"OWSPlugin.cpp.obj",
+			"OWSAuthentication.cpp.obj",
+			"OWSCharacter.cpp.obj",
+			"OWSGameInstanceSubsystem.cpp.obj",
+			"OWSPlayerController.cpp.obj",
+			"OWSPlayerState.cpp.obj"
+		]
+	}
+}

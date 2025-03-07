@@ -1,0 +1,18 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-OWSPlugin.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"..\Intermediate\Build\Win64\x64\UnrealEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.InclOrderUnreal5_3.h.obj"
+"C:\Users\Moliendo\Documents\Unreal Projects\UnrealFruits\Plugins\OWSPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\OWSPlugin\Module.OWSPlugin.cpp.obj"
+"C:\Users\Moliendo\Documents\Unreal Projects\UnrealFruits\Plugins\OWSPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\OWSPlugin\OWSPlugin.cpp.obj"
+"C:\Users\Moliendo\Documents\Unreal Projects\UnrealFruits\Plugins\OWSPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\OWSPlugin\OWSCharacter.cpp.obj"
+"C:\Users\Moliendo\Documents\Unreal Projects\UnrealFruits\Plugins\OWSPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\OWSPlugin\OWSGameInstanceSubsystem.cpp.obj"
+"C:\Users\Moliendo\Documents\Unreal Projects\UnrealFruits\Plugins\OWSPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\OWSPlugin\OWSPlayerController.cpp.obj"
+"C:\Users\Moliendo\Documents\Unreal Projects\UnrealFruits\Plugins\OWSPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\OWSPlugin\OWSPlayerState.cpp.obj"
+"C:\Users\Moliendo\Documents\Unreal Projects\UnrealFruits\Plugins\OWSPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\OWSPlugin\OWSAuthentication.cpp.obj"
+"..\Intermediate\Build\Win64\x64\UnrealEditor\Development\Default.rc2.res"
+/OUT:"C:\Users\Moliendo\Documents\Unreal Projects\UnrealFruits\Plugins\OWSPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\OWSPlugin\UnrealEditor-OWSPlugin.lib"

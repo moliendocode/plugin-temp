@@ -1,0 +1,19 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\source\\owsplugin\\private\\owsplayerstate.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\moliendo\\documents\\ue5\\engine\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.inclorderunreal5_3.h.pch",
+        "Includes": [
+            "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\owsplugin\\definitions.owsplugin.h",
+            "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\source\\owsplugin\\public\\owsplayerstate.h",
+            "c:\\users\\moliendo\\documents\\ue5\\engine\\source\\runtime\\engine\\classes\\gameframework\\playerstate.h",
+            "c:\\users\\moliendo\\documents\\ue5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\playerstate.generated.h",
+            "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\owsplugin\\uht\\owsplayerstate.generated.h",
+            "c:\\users\\moliendo\\documents\\ue5\\engine\\source\\runtime\\engine\\public\\net\\unrealnetwork.h",
+            "c:\\users\\moliendo\\documents\\ue5\\engine\\source\\runtime\\net\\core\\public\\net\\core\\propertyconditions\\propertyconditions.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

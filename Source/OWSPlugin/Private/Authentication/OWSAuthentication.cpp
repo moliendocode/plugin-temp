@@ -1,12 +1,12 @@
 #include "Authentication/OWSAuthentication.h"
-#include "OWSPlugin.h"
+#include "../OWSPlugin.h"
 #include "HttpModule.h"
 #include "Interfaces/IHttpRequest.h"  // Correct include
 #include "Interfaces/IHttpResponse.h" // Correct include
 #include "JsonObjectConverter.h"
 #include "OWSGameInstanceSubsystem.h"
 
-
+DECLARE_LOG_CATEGORY_EXTERN(LogOWSAuthentication, Log, All);
 DEFINE_LOG_CATEGORY(LogOWSAuthentication); // Define a log category
 
 FOWSAuthentication::FOWSAuthentication() :

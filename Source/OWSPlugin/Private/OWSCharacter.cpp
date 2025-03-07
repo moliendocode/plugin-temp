@@ -5,7 +5,7 @@
 #include "../OWSPlugin.h"
 #include "GenericPlatform/GenericPlatformMath.h"
 
-
+DECLARE_LOG_CATEGORY_EXTERN(OWSPlugin, Log, All);
 
 // Sets default values
 AOWSCharacter::AOWSCharacter()
