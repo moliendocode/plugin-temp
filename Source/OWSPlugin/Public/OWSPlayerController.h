@@ -45,7 +45,7 @@ public:
 
 	UFUNCTION(Server, Reliable, WithValidation, Category = "OWS|Authentication")
 	void Server_LoginUser(const FString& Username, const FString& Password);
-	bool Server_LoginUser_Validate(const FString& Username, const FString& Password);
+	void Server_LoginUser_Implementation(const FString& Username, const FString& Password);
 
 	void OnLoginComplete(bool bSuccess, const FString& ErrorMessage);
 

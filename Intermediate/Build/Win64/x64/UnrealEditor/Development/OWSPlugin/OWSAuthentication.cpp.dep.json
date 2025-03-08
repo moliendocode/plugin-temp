@@ -1,0 +1,27 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\source\\owsplugin\\private\\authentication\\owsauthentication.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\moliendo\\documents\\ue5\\engine\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.inclorderunreal5_3.h.pch",
+        "Includes": [
+            "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\owsplugin\\definitions.owsplugin.h",
+            "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\source\\owsplugin\\public\\authentication\\owsauthentication.h",
+            "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\source\\owsplugin\\public\\authentication\\owsauthenticationinterface.h",
+            "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\owsplugin\\uht\\owsauthenticationinterface.generated.h",
+            "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\owsplugin\\uht\\owsauthentication.generated.h",
+            "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\source\\owsplugin\\owsplugin.h",
+            "c:\\users\\moliendo\\documents\\ue5\\engine\\source\\runtime\\online\\http\\public\\httpmodule.h",
+            "c:\\users\\moliendo\\documents\\ue5\\engine\\source\\runtime\\online\\http\\public\\interfaces\\ihttprequest.h",
+            "c:\\users\\moliendo\\documents\\ue5\\engine\\source\\runtime\\online\\http\\public\\interfaces\\ihttpbase.h",
+            "c:\\users\\moliendo\\documents\\ue5\\engine\\source\\runtime\\online\\http\\public\\interfaces\\ihttpresponse.h",
+            "c:\\users\\moliendo\\documents\\ue5\\engine\\source\\runtime\\jsonutilities\\public\\jsonobjectconverter.h",
+            "c:\\users\\moliendo\\documents\\ue5\\engine\\source\\runtime\\jsonutilities\\public\\jsonobjectwrapper.h",
+            "c:\\users\\moliendo\\documents\\ue5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\jsonutilities\\uht\\jsonobjectwrapper.generated.h",
+            "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\source\\owsplugin\\public\\owsgameinstancesubsystem.h",
+            "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\owsplugin\\uht\\owsgameinstancesubsystem.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

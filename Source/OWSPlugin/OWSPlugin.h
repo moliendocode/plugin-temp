@@ -5,6 +5,9 @@
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
 
+DECLARE_LOG_CATEGORY_EXTERN(OWSPlugin, Log, All);
+
+
 class FOWSPlugin : public IModuleInterface
 {
 public:

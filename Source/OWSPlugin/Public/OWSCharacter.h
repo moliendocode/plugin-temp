@@ -5,10 +5,11 @@
 #include "DataTypes/OWSDataTypes.h"
 #include "OWSCharacter.generated.h" // This MUST be the last include
 
+DECLARE_LOG_CATEGORY_EXTERN(LogOWSCharacter, Log, All);
+
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnCharacterDataReceivedDelegate, const FCharacterData&, CharacterData);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnInventoryDataReceivedDelegate, const TArray<FInventoryData>&, InventoryData);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnCharacterStatsReceivedDelegate, const FCharacterStats&, CharacterStats);
-
 
 UCLASS()
 class OWSPLUGIN_API AOWSCharacter : public ACharacter

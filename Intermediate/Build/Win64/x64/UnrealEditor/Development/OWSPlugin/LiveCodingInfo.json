@@ -2,6 +2,7 @@
 	"RemapUnityFiles": 
 	{
 		"Module.OWSPlugin.cpp.obj": [
+			"OWSAuthentication.gen.cpp.obj",
 			"OWSAuthenticationInterface.gen.cpp.obj",
 			"OWSCharacter.gen.cpp.obj",
 			"OWSDataTypes.gen.cpp.obj",

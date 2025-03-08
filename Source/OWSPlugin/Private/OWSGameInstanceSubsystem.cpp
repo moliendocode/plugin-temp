@@ -1,7 +1,6 @@
 #include "OWSGameInstanceSubsystem.h"
 #include "../OWSPlugin.h"
 
-DECLARE_LOG_CATEGORY_EXTERN(LogOWSGameInstanceSubsystem, Log, All);
 DEFINE_LOG_CATEGORY(LogOWSGameInstanceSubsystem); // Define a log category
 
 

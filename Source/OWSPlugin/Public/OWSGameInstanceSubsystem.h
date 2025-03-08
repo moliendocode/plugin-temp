@@ -4,6 +4,8 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "OWSGameInstanceSubsystem.generated.h"
 
+DECLARE_LOG_CATEGORY_EXTERN(LogOWSGameInstanceSubsystem, Log, All);
+
 /**
  * Subsystem to store the authentication token for the current session.
  * This is a temporary solution for development.  For a production game,

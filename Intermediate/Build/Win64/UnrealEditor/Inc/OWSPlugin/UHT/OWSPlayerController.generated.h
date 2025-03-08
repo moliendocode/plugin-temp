@@ -33,7 +33,7 @@ OWSPLUGIN_API void FOnRegisterFailDelegate_DelegateWrapper(const FMulticastScrip
 
 #define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_OWSPlayerController_h_34_RPC_WRAPPERS_NO_PURE_DECLS \
 	virtual void Server_RegisterUser_Implementation(const FString& Username, const FString& Password, const FString& Email); \
-	virtual void Server_LoginUser_Implementation(const FString& Username, const FString& Password); \
+	virtual bool Server_LoginUser_Validate(const FString& , const FString& ); \
 	DECLARE_FUNCTION(execServer_Move); \
 	DECLARE_FUNCTION(execServer_GetCharacterData); \
 	DECLARE_FUNCTION(execClient_OnRegisterComplete); \

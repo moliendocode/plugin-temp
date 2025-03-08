@@ -29,11 +29,11 @@ struct Z_Construct_UDelegateFunction_OWSPlugin_LoginDelegate__DelegateSignature_
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "// Delegate declarations DESPU\xef\xbf\xbdS del include del .generated.h\n" },
+		{ "Comment", "// Delegate declarations\n" },
 #endif
 		{ "ModuleRelativePath", "Public/Authentication/OWSAuthenticationInterface.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "Delegate declarations DESPU\xef\xbf\xbdS del include del .generated.h" },
+		{ "ToolTip", "Delegate declarations" },
 #endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ErrorMessage_MetaData[] = {
@@ -223,12 +223,12 @@ struct OWSAuthenticationInterface_eventLogin_Parms
 	FString Password;
 	FLoginDelegate Callback;
 };
-void IOWSAuthenticationInterface::Login(const FString& Username, const FString& Password, const FLoginDelegate& Callback)
+void IOWSAuthenticationInterface::Login(const FString& Username, const FString& Password, FLoginDelegate const& Callback)
 {
 	check(0 && "Do not directly call Event functions in Interfaces. Call Execute_Login instead.");
 }
 static FName NAME_UOWSAuthenticationInterface_Login = FName(TEXT("Login"));
-void IOWSAuthenticationInterface::Execute_Login(UObject* O, const FString& Username, const FString& Password, const FLoginDelegate& Callback)
+void IOWSAuthenticationInterface::Execute_Login(UObject* O, const FString& Username, const FString& Password, FLoginDelegate const& Callback)
 {
 	check(O != NULL);
 	check(O->GetClass()->ImplementsInterface(UOWSAuthenticationInterface::StaticClass()));
@@ -251,12 +251,21 @@ struct Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 		{ "Category", "OWS|Authentication" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// Declaraci\xef\xbf\xbdn de funciones con BlueprintNativeEvent\n" },
+#endif
 		{ "ModuleRelativePath", "Public/Authentication/OWSAuthenticationInterface.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Declaraci\xef\xbf\xbdn de funciones con BlueprintNativeEvent" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Username_MetaData[] = {
 		{ "NativeConst", "" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Password_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Callback_MetaData[] = {
 		{ "NativeConst", "" },
 	};
 #endif // WITH_METADATA
@@ -268,14 +277,14 @@ struct Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics
 };
 const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics::NewProp_Username = { "Username", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSAuthenticationInterface_eventLogin_Parms, Username), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Username_MetaData), NewProp_Username_MetaData) };
 const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics::NewProp_Password = { "Password", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSAuthenticationInterface_eventLogin_Parms, Password), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Password_MetaData), NewProp_Password_MetaData) };
-const UECodeGen_Private::FDelegatePropertyParams Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics::NewProp_Callback = { "Callback", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Delegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSAuthenticationInterface_eventLogin_Parms, Callback), Z_Construct_UDelegateFunction_OWSPlugin_LoginDelegate__DelegateSignature, METADATA_PARAMS(0, nullptr) }; // 2347991197
+const UECodeGen_Private::FDelegatePropertyParams Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics::NewProp_Callback = { "Callback", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Delegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSAuthenticationInterface_eventLogin_Parms, Callback), Z_Construct_UDelegateFunction_OWSPlugin_LoginDelegate__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Callback_MetaData), NewProp_Callback_MetaData) }; // 828838022
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics::NewProp_Username,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics::NewProp_Password,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics::NewProp_Callback,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UOWSAuthenticationInterface, nullptr, "Login", nullptr, nullptr, Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics::PropPointers), sizeof(OWSAuthenticationInterface_eventLogin_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x0C020C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics::Function_MetaDataParams), Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics::Function_MetaDataParams) };
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UOWSAuthenticationInterface, nullptr, "Login", nullptr, nullptr, Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics::PropPointers), sizeof(OWSAuthenticationInterface_eventLogin_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x0C420C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics::Function_MetaDataParams), Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics::Function_MetaDataParams) };
 static_assert(sizeof(OWSAuthenticationInterface_eventLogin_Parms) < MAX_uint16);
 UFunction* Z_Construct_UFunction_UOWSAuthenticationInterface_Login()
 {
@@ -290,10 +299,10 @@ DEFINE_FUNCTION(IOWSAuthenticationInterface::execLogin)
 {
 	P_GET_PROPERTY(FStrProperty,Z_Param_Username);
 	P_GET_PROPERTY(FStrProperty,Z_Param_Password);
-	P_GET_PROPERTY(FDelegateProperty,Z_Param_Callback);
+	P_GET_PROPERTY_REF(FDelegateProperty,Z_Param_Out_Callback);
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	P_THIS->Login_Implementation(Z_Param_Username,Z_Param_Password,FLoginDelegate(Z_Param_Callback));
+	P_THIS->Login_Implementation(Z_Param_Username,Z_Param_Password,FLoginDelegate(Z_Param_Out_Callback));
 	P_NATIVE_END;
 }
 // End Interface UOWSAuthenticationInterface Function Login
@@ -355,12 +364,12 @@ struct OWSAuthenticationInterface_eventRegister_Parms
 	FString Email;
 	FRegisterDelegate Callback;
 };
-void IOWSAuthenticationInterface::Register(const FString& Username, const FString& Password, const FString& Email, const FRegisterDelegate& Callback)
+void IOWSAuthenticationInterface::Register(const FString& Username, const FString& Password, const FString& Email, FRegisterDelegate const& Callback)
 {
 	check(0 && "Do not directly call Event functions in Interfaces. Call Execute_Register instead.");
 }
 static FName NAME_UOWSAuthenticationInterface_Register = FName(TEXT("Register"));
-void IOWSAuthenticationInterface::Execute_Register(UObject* O, const FString& Username, const FString& Password, const FString& Email, const FRegisterDelegate& Callback)
+void IOWSAuthenticationInterface::Execute_Register(UObject* O, const FString& Username, const FString& Password, const FString& Email, FRegisterDelegate const& Callback)
 {
 	check(O != NULL);
 	check(O->GetClass()->ImplementsInterface(UOWSAuthenticationInterface::StaticClass()));
@@ -395,6 +404,9 @@ struct Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Email_MetaData[] = {
 		{ "NativeConst", "" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Callback_MetaData[] = {
+		{ "NativeConst", "" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FStrPropertyParams NewProp_Username;
 	static const UECodeGen_Private::FStrPropertyParams NewProp_Password;
@@ -406,7 +418,7 @@ struct Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics
 const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::NewProp_Username = { "Username", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSAuthenticationInterface_eventRegister_Parms, Username), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Username_MetaData), NewProp_Username_MetaData) };
 const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::NewProp_Password = { "Password", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSAuthenticationInterface_eventRegister_Parms, Password), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Password_MetaData), NewProp_Password_MetaData) };
 const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::NewProp_Email = { "Email", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSAuthenticationInterface_eventRegister_Parms, Email), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Email_MetaData), NewProp_Email_MetaData) };
-const UECodeGen_Private::FDelegatePropertyParams Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::NewProp_Callback = { "Callback", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Delegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSAuthenticationInterface_eventRegister_Parms, Callback), Z_Construct_UDelegateFunction_OWSPlugin_RegisterDelegate__DelegateSignature, METADATA_PARAMS(0, nullptr) }; // 3357963611
+const UECodeGen_Private::FDelegatePropertyParams Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::NewProp_Callback = { "Callback", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Delegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSAuthenticationInterface_eventRegister_Parms, Callback), Z_Construct_UDelegateFunction_OWSPlugin_RegisterDelegate__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Callback_MetaData), NewProp_Callback_MetaData) }; // 3357963611
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::NewProp_Username,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::NewProp_Password,
@@ -414,7 +426,7 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UOWSAu
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::NewProp_Callback,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UOWSAuthenticationInterface, nullptr, "Register", nullptr, nullptr, Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::PropPointers), sizeof(OWSAuthenticationInterface_eventRegister_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x0C020C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::Function_MetaDataParams), Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::Function_MetaDataParams) };
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UOWSAuthenticationInterface, nullptr, "Register", nullptr, nullptr, Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::PropPointers), sizeof(OWSAuthenticationInterface_eventRegister_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x0C420C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::Function_MetaDataParams), Z_Construct_UFunction_UOWSAuthenticationInterface_Register_Statics::Function_MetaDataParams) };
 static_assert(sizeof(OWSAuthenticationInterface_eventRegister_Parms) < MAX_uint16);
 UFunction* Z_Construct_UFunction_UOWSAuthenticationInterface_Register()
 {
@@ -430,10 +442,10 @@ DEFINE_FUNCTION(IOWSAuthenticationInterface::execRegister)
 	P_GET_PROPERTY(FStrProperty,Z_Param_Username);
 	P_GET_PROPERTY(FStrProperty,Z_Param_Password);
 	P_GET_PROPERTY(FStrProperty,Z_Param_Email);
-	P_GET_PROPERTY(FDelegateProperty,Z_Param_Callback);
+	P_GET_PROPERTY_REF(FDelegateProperty,Z_Param_Out_Callback);
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	P_THIS->Register_Implementation(Z_Param_Username,Z_Param_Password,Z_Param_Email,FRegisterDelegate(Z_Param_Callback));
+	P_THIS->Register_Implementation(Z_Param_Username,Z_Param_Password,Z_Param_Email,FRegisterDelegate(Z_Param_Out_Callback));
 	P_NATIVE_END;
 }
 // End Interface UOWSAuthenticationInterface Function Register
@@ -467,9 +479,9 @@ struct Z_Construct_UClass_UOWSAuthenticationInterface_Statics
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_UOWSAuthenticationInterface_IsLoggedIn, "IsLoggedIn" }, // 3217614915
-		{ &Z_Construct_UFunction_UOWSAuthenticationInterface_Login, "Login" }, // 2718046302
+		{ &Z_Construct_UFunction_UOWSAuthenticationInterface_Login, "Login" }, // 2502362971
 		{ &Z_Construct_UFunction_UOWSAuthenticationInterface_Logout, "Logout" }, // 3229147935
-		{ &Z_Construct_UFunction_UOWSAuthenticationInterface_Register, "Register" }, // 2066633229
+		{ &Z_Construct_UFunction_UOWSAuthenticationInterface_Register, "Register" }, // 665699942
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -518,10 +530,10 @@ UOWSAuthenticationInterface::~UOWSAuthenticationInterface() {}
 struct Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UOWSAuthenticationInterface, UOWSAuthenticationInterface::StaticClass, TEXT("UOWSAuthenticationInterface"), &Z_Registration_Info_UClass_UOWSAuthenticationInterface, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UOWSAuthenticationInterface), 2841688793U) },
+		{ Z_Construct_UClass_UOWSAuthenticationInterface, UOWSAuthenticationInterface::StaticClass, TEXT("UOWSAuthenticationInterface"), &Z_Registration_Info_UClass_UOWSAuthenticationInterface, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UOWSAuthenticationInterface), 2014709366U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_1365435308(TEXT("/Script/OWSPlugin"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_605449014(TEXT("/Script/OWSPlugin"),
 	Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

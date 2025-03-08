@@ -6,18 +6,18 @@
 #include "JsonObjectConverter.h"
 #include "OWSGameInstanceSubsystem.h"
 
-DECLARE_LOG_CATEGORY_EXTERN(LogOWSAuthentication, Log, All);
+
 DEFINE_LOG_CATEGORY(LogOWSAuthentication); // Define a log category
 
-FOWSAuthentication::FOWSAuthentication() :
+UOWSAuthentication::UOWSAuthentication() :
     BaseUrl(TEXT("http://localhost:9000")) //  Replace with your OWS2 server URL
 {
 
 }
 
-void FOWSAuthentication::Login_Implementation(const FString& Username, const FString& Password, FLoginDelegate Callback)
+void UOWSAuthentication::Login_Implementation(const FString& Username, const FString& Password, const FLoginDelegate& Callback)
 {
-    UE_LOG(LogOWSAuthentication, Log, TEXT("FOWSAuthentication::Login - User: %s"), *Username);
+    UE_LOG(LogOWSAuthentication, Log, TEXT("UOWSAuthentication::Login - User: %s"), *Username);
 
     // Create the JSON payload.
     TSharedPtr<FJsonObject> RequestJson = MakeShareable(new FJsonObject);
@@ -131,9 +131,9 @@ void FOWSAuthentication::Login_Implementation(const FString& Username, const FSt
 
 
 
-void FOWSAuthentication::Register_Implementation(const FString& Username, const FString& Password, const FString& Email, FRegisterDelegate Callback)
+void UOWSAuthentication::Register_Implementation(const FString& Username, const FString& Password, const FString& Email, const FRegisterDelegate& Callback)
 {
-    UE_LOG(LogOWSAuthentication, Log, TEXT("FOWSAuthentication::Register - User: %s, Email: %s"), *Username, *Email);
+    UE_LOG(LogOWSAuthentication, Log, TEXT("UOWSAuthentication::Register - User: %s, Email: %s"), *Username, *Email);
 
     // Create the JSON payload.
     TSharedPtr<FJsonObject> RequestJson = MakeShareable(new FJsonObject);
@@ -207,7 +207,7 @@ void FOWSAuthentication::Register_Implementation(const FString& Username, const 
     HttpRequest->ProcessRequest();
 }
 
-void FOWSAuthentication::Logout_Implementation()
+void UOWSAuthentication::Logout_Implementation()
 {
     if (UGameInstance* GameInstance = GEngine->GameViewport->GetGameInstance())
     {
@@ -226,7 +226,7 @@ void FOWSAuthentication::Logout_Implementation()
     }
 }
 
-bool FOWSAuthentication::IsLoggedIn_Implementation()
+bool UOWSAuthentication::IsLoggedIn_Implementation()
 {
     if (UGameInstance* GameInstance = GEngine->GameViewport->GetGameInstance())
     {

@@ -1,26 +1,23 @@
 #pragma once
-
 #include "CoreMinimal.h"
 #include "OWSAuthenticationInterface.h"
-#include "OWSAuthentication.generated.h" // This MUST be the last include
+#include "OWSAuthentication.generated.h"
 
-/**
- * Implements the IOWSAuthenticationInterface using simple username/password
- * authentication against the OWS2 backend.
- */
-class OWSPLUGIN_API FOWSAuthentication : public IOWSAuthenticationInterface
+DECLARE_LOG_CATEGORY_EXTERN(LogOWSAuthentication, Log, All);
+
+UCLASS()
+class OWSPLUGIN_API UOWSAuthentication : public UObject, public IOWSAuthenticationInterface
 {
+    GENERATED_BODY()
 public:
-	FOWSAuthentication();
+    UOWSAuthentication();
 
-	// IOWSAuthenticationInterface
-	virtual void Login_Implementation(const FString& Username, const FString& Password, FLoginDelegate Callback) override;
-	virtual void Register_Implementation(const FString& Username, const FString& Password, const FString& Email, FRegisterDelegate Callback) override;
-	virtual void Logout_Implementation() override;
-	virtual bool IsLoggedIn_Implementation() override;
-	// ~IOWSAuthenticationInterface
+    // Funciones _Implementation sin virtual ni override
+    void Login_Implementation(const FString& Username, const FString& Password, const FLoginDelegate& Callback);
+    void Register_Implementation(const FString& Username, const FString& Password, const FString& Email, const FRegisterDelegate& Callback);
+    void Logout_Implementation();
+    bool IsLoggedIn_Implementation();
 
 private:
-	// Base URL of the OWS2 server.
-	FString BaseUrl;
+    FString BaseUrl;
 };

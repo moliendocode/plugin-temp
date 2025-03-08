@@ -14,23 +14,27 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define OWSPLUGIN_OWSAuthenticationInterface_generated_h
 
-#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_10_DELEGATE \
+#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_8_DELEGATE \
 OWSPLUGIN_API void FLoginDelegate_DelegateWrapper(const FScriptDelegate& LoginDelegate, bool bSuccess, const FString& ErrorMessage);
 
 
-#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_11_DELEGATE \
+#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_9_DELEGATE \
 OWSPLUGIN_API void FRegisterDelegate_DelegateWrapper(const FScriptDelegate& RegisterDelegate, bool bSuccess, const FString& ErrorMessage);
 
 
-#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	virtual bool IsLoggedIn_Implementation() { return false; }; \
+	virtual void Logout_Implementation() {}; \
+	virtual void Register_Implementation(const FString& Username, const FString& Password, const FString& Email, FRegisterDelegate const& Callback) {}; \
+	virtual void Login_Implementation(const FString& Username, const FString& Password, FLoginDelegate const& Callback) {}; \
 	DECLARE_FUNCTION(execIsLoggedIn); \
 	DECLARE_FUNCTION(execLogout); \
 	DECLARE_FUNCTION(execRegister); \
 	DECLARE_FUNCTION(execLogin);
 
 
-#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_16_CALLBACK_WRAPPERS
-#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_16_ENHANCED_CONSTRUCTORS \
+#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_14_CALLBACK_WRAPPERS
+#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_14_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	OWSPLUGIN_API UOWSAuthenticationInterface(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 private: \
@@ -44,7 +48,7 @@ public: \
 	OWSPLUGIN_API virtual ~UOWSAuthenticationInterface();
 
 
-#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_16_GENERATED_UINTERFACE_BODY() \
+#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_14_GENERATED_UINTERFACE_BODY() \
 private: \
 	static void StaticRegisterNativesUOWSAuthenticationInterface(); \
 	friend struct Z_Construct_UClass_UOWSAuthenticationInterface_Statics; \
@@ -53,34 +57,34 @@ public: \
 	DECLARE_SERIALIZER(UOWSAuthenticationInterface)
 
 
-#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_16_GENERATED_BODY \
+#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_14_GENERATED_BODY \
 	PRAGMA_DISABLE_DEPRECATION_WARNINGS \
-	FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_16_GENERATED_UINTERFACE_BODY() \
-	FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_16_ENHANCED_CONSTRUCTORS \
+	FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_14_GENERATED_UINTERFACE_BODY() \
+	FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 	PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_16_INCLASS_IINTERFACE_NO_PURE_DECLS \
+#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_14_INCLASS_IINTERFACE_NO_PURE_DECLS \
 protected: \
 	virtual ~IOWSAuthenticationInterface() {} \
 public: \
 	typedef UOWSAuthenticationInterface UClassType; \
 	typedef IOWSAuthenticationInterface ThisClass; \
 	static bool Execute_IsLoggedIn(UObject* O); \
-	static void Execute_Login(UObject* O, const FString& Username, const FString& Password, const FLoginDelegate& Callback); \
+	static void Execute_Login(UObject* O, const FString& Username, const FString& Password, FLoginDelegate const& Callback); \
 	static void Execute_Logout(UObject* O); \
-	static void Execute_Register(UObject* O, const FString& Username, const FString& Password, const FString& Email, const FRegisterDelegate& Callback); \
+	static void Execute_Register(UObject* O, const FString& Username, const FString& Password, const FString& Email, FRegisterDelegate const& Callback); \
 	virtual UObject* _getUObject() const { return nullptr; }
 
 
-#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_13_PROLOG
-#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_21_GENERATED_BODY \
+#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_11_PROLOG
+#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_19_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_16_CALLBACK_WRAPPERS \
-	FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_16_INCLASS_IINTERFACE_NO_PURE_DECLS \
+	FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_14_CALLBACK_WRAPPERS \
+	FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_14_INCLASS_IINTERFACE_NO_PURE_DECLS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

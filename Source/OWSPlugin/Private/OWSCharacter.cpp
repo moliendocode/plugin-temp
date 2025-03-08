@@ -5,7 +5,7 @@
 #include "../OWSPlugin.h"
 #include "GenericPlatform/GenericPlatformMath.h"
 
-DECLARE_LOG_CATEGORY_EXTERN(OWSPlugin, Log, All);
+DEFINE_LOG_CATEGORY(LogOWSCharacter);
 
 // Sets default values
 AOWSCharacter::AOWSCharacter()
@@ -21,7 +21,7 @@ AOWSCharacter::AOWSCharacter()
 void AOWSCharacter::BeginPlay()
 {
     Super::BeginPlay();
-    UE_LOG(OWSPlugin, Verbose, TEXT("AOWSCharacter::BeginPlay"));
+    UE_LOG(LogOWSCharacter, Verbose, TEXT("AOWSCharacter::BeginPlay"));
 
     //Server side only
     if (GetLocalRole() == ROLE_Authority)
@@ -29,7 +29,7 @@ void AOWSCharacter::BeginPlay()
         AOWSPlayerController* PC = Cast<AOWSPlayerController>(GetController());
         if (!PC)
         {
-            UE_LOG(OWSPlugin, Warning, TEXT("AOWSCharacter::BeginPlay - PlayerController is NULL"));
+            UE_LOG(LogOWSCharacter, Warning, TEXT("AOWSCharacter::BeginPlay - PlayerController is NULL"));
         }
     }
 }
@@ -86,22 +86,27 @@ void AOWSCharacter::SetCharacterStats(const FCharacterStats& InCharacterStats)
 void AOWSCharacter::OnRep_CharacterData()
 {
     OnCharacterDataReceived.Broadcast(CharacterData);
-    UE_LOG(OWSPlugin, Verbose, TEXT("OnRep_CharacterData Called - Character Name: %s"), *CharacterData.CharacterName);
+    UE_LOG(LogOWSCharacter, Verbose, TEXT("OnRep_CharacterData Called - Character Name: %s"), *CharacterData.CharacterName);
 }
 
 void AOWSCharacter::OnRep_InventoryData()
 {
     OnInventoryDataReceived.Broadcast(InventoryData);
-    UE_LOG(OWSPlugin, Verbose, TEXT("OnRep_InventoryData Called - Inventory Size: %d"), InventoryData.Num());
+    UE_LOG(LogOWSCharacter, Verbose, TEXT("OnRep_InventoryData Called - Inventory Size: %d"), InventoryData.Num());
 }
 
 void AOWSCharacter::OnRep_CharacterStats()
 {
     OnCharacterStatsReceived.Broadcast(CharacterStats);
-    UE_LOG(OWSPlugin, Verbose, TEXT("OnRep_CharacterStats Called - Health: %d"), CharacterStats.CurrentHealth);
+    UE_LOG(LogOWSCharacter, Verbose, TEXT("OnRep_CharacterStats Called - Health: %d"), CharacterStats.CurrentHealth);
 }
 
 // RPC function to move the player on the server
+bool AOWSCharacter::Server_Move_Validate(FVector_NetQuantize NewLocation)
+{
+	return true; // Add validation if needed
+}
+
 void AOWSCharacter::Server_Move_Implementation(FVector_NetQuantize NewLocation)
 {
     // Basic validation to prevent cheating.  Adjust the threshold as needed.
@@ -109,7 +114,7 @@ void AOWSCharacter::Server_Move_Implementation(FVector_NetQuantize NewLocation)
     if (FVector::DistSquared(GetActorLocation(), NewLocation) > FMath::Square(MaxMoveDistancePerTick))
     {
         // Log a warning, but don't update the position.  Consider kicking the player or applying a penalty.
-        UE_LOG(OWSPlugin, Warning, TEXT("Player %s attempted to move too far! Possible cheat attempt."), *GetName());
+        UE_LOG(LogOWSCharacter, Warning, TEXT("Player %s attempted to move too far! Possible cheat attempt."), *GetName());
         Client_RejectMove(GetActorLocation()); //Conform the client
         return;
     }
@@ -163,7 +168,7 @@ void AOWSCharacter::UpdateCharacterData_Implementation(const FCharacterData& InC
     }
     else
     {
-        UE_LOG(OWSPlugin, Warning, TEXT("UpdateCharacterData should only be called on the server."));
+        UE_LOG(LogOWSCharacter, Warning, TEXT("UpdateCharacterData should only be called on the server."));
     }
 }
 
