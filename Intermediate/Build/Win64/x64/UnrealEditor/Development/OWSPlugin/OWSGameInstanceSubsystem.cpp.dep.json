@@ -7,6 +7,10 @@
         "Includes": [
             "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\owsplugin\\definitions.owsplugin.h",
             "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\source\\owsplugin\\public\\owsgameinstancesubsystem.h",
+            "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\source\\owsplugin\\public\\authentication\\owsauthenticationinterface.h",
+            "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\owsplugin\\uht\\owsauthenticationinterface.generated.h",
+            "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\source\\owsplugin\\public\\authentication\\owsauthentication.h",
+            "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\owsplugin\\uht\\owsauthentication.generated.h",
             "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\owsplugin\\uht\\owsgameinstancesubsystem.generated.h",
             "c:\\users\\moliendo\\documents\\unreal projects\\unrealfruits\\plugins\\owsplugin\\source\\owsplugin\\owsplugin.h"
         ],

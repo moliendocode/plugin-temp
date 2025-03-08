@@ -14,6 +14,10 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define OWSPLUGIN_OWSAuthentication_generated_h
 
+#define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthentication_h_11_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execInit);
+
+
 #define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthentication_h_11_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUOWSAuthentication(); \
@@ -32,7 +36,7 @@ private: \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UOWSAuthentication); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UOWSAuthentication); \
-	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UOWSAuthentication) \
+	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UOWSAuthentication) \
 	NO_API virtual ~UOWSAuthentication();
 
 
@@ -40,6 +44,7 @@ public: \
 #define FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthentication_h_11_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
+	FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthentication_h_11_RPC_WRAPPERS_NO_PURE_DECLS \
 	FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthentication_h_11_INCLASS_NO_PURE_DECLS \
 	FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthentication_h_11_ENHANCED_CONSTRUCTORS \
 private: \

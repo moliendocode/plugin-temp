@@ -1,8 +1,41 @@
 #include "OWSGameInstanceSubsystem.h"
 #include "../OWSPlugin.h"
 
-DEFINE_LOG_CATEGORY(LogOWSGameInstanceSubsystem); // Define a log category
+DEFINE_LOG_CATEGORY(LogOWSGameInstanceSubsystem);
 
+UOWSGameInstanceSubsystem::UOWSGameInstanceSubsystem()
+{
+}
+
+FString UOWSGameInstanceSubsystem::GetCustomerGUID() const
+{
+	return OWSPluginConfig::GetCustomerGUID();
+}
+
+
+void UOWSGameInstanceSubsystem::Initialize(FSubsystemCollectionBase& Collection)
+{
+	Super::Initialize(Collection);
+
+	// Crear la instancia de UOWSAuthentication usando NewObject para que se administre correctamente
+	if (UGameInstance* GI = GetGameInstance())
+	{
+		Authentication = NewObject<UOWSAuthentication>(GI);
+		if (Authentication)
+		{
+			// Inicializamos con el CustomerGUID
+			Authentication->Init(OWSPluginConfig::GetCustomerGUID());
+		}
+		else
+		{
+			UE_LOG(LogOWSGameInstanceSubsystem, Error, TEXT("Failed to create UOWSAuthentication instance."));
+		}
+	}
+	else
+	{
+		UE_LOG(LogOWSGameInstanceSubsystem, Error, TEXT("GameInstance is null in UOWSGameInstanceSubsystem::Initialize"));
+	}
+}
 
 void UOWSGameInstanceSubsystem::SetAuthToken(const FString& NewToken)
 {

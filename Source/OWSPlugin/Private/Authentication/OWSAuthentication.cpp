@@ -1,79 +1,89 @@
 #include "Authentication/OWSAuthentication.h"
 #include "../OWSPlugin.h"
 #include "HttpModule.h"
-#include "Interfaces/IHttpRequest.h"  // Correct include
-#include "Interfaces/IHttpResponse.h" // Correct include
+#include "Interfaces/IHttpRequest.h"
+#include "Interfaces/IHttpResponse.h"
 #include "JsonObjectConverter.h"
 #include "OWSGameInstanceSubsystem.h"
 
+DEFINE_LOG_CATEGORY(LogOWSAuthentication);
 
-DEFINE_LOG_CATEGORY(LogOWSAuthentication); // Define a log category
-
-UOWSAuthentication::UOWSAuthentication() :
-    BaseUrl(TEXT("http://localhost:44302")) //  Replace with your OWS2 server URL
+UOWSAuthentication::UOWSAuthentication(const FObjectInitializer& ObjectInitializer)
+    : Super(ObjectInitializer)
 {
+    BaseUrl = TEXT("http://localhost:44302");
+    CustomerGUID = TEXT("");
+}
 
+void UOWSAuthentication::Init(const FString& InCustomerGUID)
+{
+    CustomerGUID = InCustomerGUID;
 }
 
 void UOWSAuthentication::Login_Implementation(const FString& Username, const FString& Password, const FLoginDelegate& Callback)
 {
-    UE_LOG(LogOWSAuthentication, Log, TEXT("UOWSAuthentication::Login - User: %s"), *Username);
+    // Obtén el GUID desde la configuración
+    FString ConfigGUID = OWSPluginConfig::GetCustomerGUID();
+    UE_LOG(LogOWSAuthentication, Log, TEXT("UOWSAuthentication::Login - User: %s, CustomerGUID: %s"), *Username, *ConfigGUID);
 
-    // Create the JSON payload.
+    // Crear el payload JSON.
     TSharedPtr<FJsonObject> RequestJson = MakeShareable(new FJsonObject);
-    RequestJson->SetStringField(TEXT("Username"), Username);
-    RequestJson->SetStringField(TEXT("Password"), Password);
+    RequestJson->SetStringField(TEXT("email"), Username);
+    RequestJson->SetStringField(TEXT("password"), Password);
 
     FString RequestBody;
     TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&RequestBody);
     FJsonSerializer::Serialize(RequestJson.ToSharedRef(), Writer);
 
-    // Create the HTTP request.
+    // Crear la petición HTTP.
     TSharedRef<IHttpRequest, ESPMode::ThreadSafe> HttpRequest = FHttpModule::Get().CreateRequest();
     HttpRequest->SetVerb(TEXT("POST"));
-    HttpRequest->SetURL(BaseUrl + TEXT("/api/User/Login"));
+    HttpRequest->SetURL(BaseUrl + TEXT("/api/Users/LoginAndCreateSession"));
+    UE_LOG(LogOWSAuthentication, Log, TEXT("%s/api/Users/LoginAndCreateSession"), *BaseUrl);
     HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
+    HttpRequest->SetHeader(TEXT("X-CustomerGUID"), ConfigGUID);
     HttpRequest->SetContentAsString(RequestBody);
+    UE_LOG(LogOWSAuthentication, Log, TEXT("Request Body: %s"), *RequestBody);
 
-    // Bind the response delegate.
+    // Bind del delegado de respuesta.
     HttpRequest->OnProcessRequestComplete().BindLambda(
         [Callback](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
         {
             FString ErrorMessage;
-
             if (bWasSuccessful && Response.IsValid())
             {
+                FString ResponseContent = Response->GetContentAsString();
                 UE_LOG(LogOWSAuthentication, Log, TEXT("Login Response Code: %d"), Response->GetResponseCode());
+                UE_LOG(LogOWSAuthentication, Log, TEXT("Response Body: %s"), *ResponseContent);
                 if (EHttpResponseCodes::IsOk(Response->GetResponseCode()))
                 {
-                    // Deserialize the response.
+                    // Deserializar la respuesta.
                     TSharedPtr<FJsonObject> ResponseJson;
                     TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Response->GetContentAsString());
                     if (FJsonSerializer::Deserialize(Reader, ResponseJson))
                     {
-                        // Extract the authentication token.
+                        // Extraer el UserSessionGuid de autenticación.
                         FString AuthToken;
-                        if (ResponseJson->TryGetStringField(TEXT("Token"), AuthToken))
+                        if (ResponseJson->TryGetStringField(TEXT("userSessionGuid"), AuthToken))
                         {
-                            // Store the token (temporarily - see UOWSGameInstanceSubsystem).
+                            // Almacenar el token en el subsistema.
                             if (UGameInstance* GameInstance = GEngine->GameViewport->GetGameInstance())
                             {
                                 if (UOWSGameInstanceSubsystem* OWSGameInstanceSubsystem = GameInstance->GetSubsystem<UOWSGameInstanceSubsystem>())
                                 {
                                     OWSGameInstanceSubsystem->SetAuthToken(AuthToken);
-                                    // Notify the caller of success.
                                     Callback.ExecuteIfBound(true, "");
                                     return;
                                 }
                                 else
                                 {
-                                    UE_LOG(LogOWSAuthentication, Error, TEXT("Login:  OWSGameInstanceSubsystem not found!"));
+                                    UE_LOG(LogOWSAuthentication, Error, TEXT("Login: OWSGameInstanceSubsystem not found!"));
                                     ErrorMessage = TEXT("Internal error: OWSGameInstanceSubsystem not found");
                                 }
                             }
                             else
                             {
-                                UE_LOG(LogOWSAuthentication, Error, TEXT("Login:  GameInstance not found!"));
+                                UE_LOG(LogOWSAuthentication, Error, TEXT("Login: GameInstance not found!"));
                                 ErrorMessage = TEXT("Internal error: GameInstance not found");
                             }
                         }
@@ -91,17 +101,14 @@ void UOWSAuthentication::Login_Implementation(const FString& Username, const FSt
                 }
                 else
                 {
-                    // Handle error responses.
                     UE_LOG(LogOWSAuthentication, Error, TEXT("Login Failed: HTTP Error %d"), Response->GetResponseCode());
                     FString ResponseMessage = Response->GetContentAsString();
                     UE_LOG(LogOWSAuthentication, Error, TEXT("Response: %s"), *ResponseMessage);
 
-                    //Try to get the error message
                     TSharedPtr<FJsonObject> ResponseJson;
                     TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(ResponseMessage);
                     if (FJsonSerializer::Deserialize(Reader, ResponseJson))
                     {
-                        // Extract the error message.
                         if (ResponseJson->TryGetStringField(TEXT("error"), ErrorMessage))
                         {
                             UE_LOG(LogOWSAuthentication, Error, TEXT("Login: Error message: %s"), *ErrorMessage);
@@ -125,61 +132,55 @@ void UOWSAuthentication::Login_Implementation(const FString& Username, const FSt
             Callback.ExecuteIfBound(false, ErrorMessage);
         });
 
-    // Send the request.
     HttpRequest->ProcessRequest();
 }
 
 
-
 void UOWSAuthentication::Register_Implementation(const FString& Username, const FString& Password, const FString& Email, const FRegisterDelegate& Callback)
 {
-    UE_LOG(LogOWSAuthentication, Log, TEXT("UOWSAuthentication::Register - User: %s, Email: %s"), *Username, *Email);
+    // Obtener el CustomerGUID desde la configuración
+    FString ConfigGUID = OWSPluginConfig::GetCustomerGUID();
+    UE_LOG(LogOWSAuthentication, Log, TEXT("UOWSAuthentication::Register - User: %s, Email: %s, CustomerGUID: %s"), *Username, *Email, *ConfigGUID);
 
-    // Create the JSON payload.
     TSharedPtr<FJsonObject> RequestJson = MakeShareable(new FJsonObject);
-    RequestJson->SetStringField(TEXT("Username"), Username);
-    RequestJson->SetStringField(TEXT("Password"), Password);
-    RequestJson->SetStringField(TEXT("Email"), Email);
+    RequestJson->SetStringField(TEXT("email"), Email);
+    RequestJson->SetStringField(TEXT("password"), Password);
+    RequestJson->SetStringField(TEXT("firstName"), Email);
+    RequestJson->SetStringField(TEXT("lastName"), TEXT("None"));
 
     FString RequestBody;
     TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&RequestBody);
     FJsonSerializer::Serialize(RequestJson.ToSharedRef(), Writer);
 
-    // Create the HTTP request.
     TSharedRef<IHttpRequest, ESPMode::ThreadSafe> HttpRequest = FHttpModule::Get().CreateRequest();
     HttpRequest->SetVerb(TEXT("POST"));
-    HttpRequest->SetURL(BaseUrl + TEXT("/api/User/Register"));
+    HttpRequest->SetURL(BaseUrl + TEXT("/api/Users/RegisterUser"));
     HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
+    HttpRequest->SetHeader(TEXT("X-CustomerGUID"), ConfigGUID);
     HttpRequest->SetContentAsString(RequestBody);
 
-    // Bind the response delegate.
     HttpRequest->OnProcessRequestComplete().BindLambda(
         [Callback](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
         {
             FString ErrorMessage;
             if (bWasSuccessful && Response.IsValid())
             {
-
                 UE_LOG(LogOWSAuthentication, Log, TEXT("Register Response Code: %d"), Response->GetResponseCode());
                 if (EHttpResponseCodes::IsOk(Response->GetResponseCode()))
                 {
-                    // Registration successful.
                     Callback.ExecuteIfBound(true, "");
                     return;
                 }
                 else
                 {
-                    // Handle error responses.
                     UE_LOG(LogOWSAuthentication, Error, TEXT("Register Failed: HTTP Error %d"), Response->GetResponseCode());
                     FString ResponseMessage = Response->GetContentAsString();
                     UE_LOG(LogOWSAuthentication, Error, TEXT("Response: %s"), *ResponseMessage);
 
-                    //Try to get the error message
                     TSharedPtr<FJsonObject> ResponseJson;
                     TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(ResponseMessage);
                     if (FJsonSerializer::Deserialize(Reader, ResponseJson))
                     {
-                        // Extract the error message.
                         if (ResponseJson->TryGetStringField(TEXT("error"), ErrorMessage))
                         {
                             UE_LOG(LogOWSAuthentication, Error, TEXT("Register: Error message: %s"), *ErrorMessage);
@@ -203,9 +204,9 @@ void UOWSAuthentication::Register_Implementation(const FString& Username, const 
             Callback.ExecuteIfBound(false, ErrorMessage);
         });
 
-    // Send the request.
     HttpRequest->ProcessRequest();
 }
+
 
 void UOWSAuthentication::Logout_Implementation()
 {
@@ -217,12 +218,12 @@ void UOWSAuthentication::Logout_Implementation()
         }
         else
         {
-            UE_LOG(LogOWSAuthentication, Error, TEXT("Logout:  OWSGameInstanceSubsystem not found!"));
+            UE_LOG(LogOWSAuthentication, Error, TEXT("Logout: OWSGameInstanceSubsystem not found!"));
         }
     }
     else
     {
-        UE_LOG(LogOWSAuthentication, Error, TEXT("Logout:  GameInstance not found!"));
+        UE_LOG(LogOWSAuthentication, Error, TEXT("Logout: GameInstance not found!"));
     }
 }
 
@@ -236,13 +237,13 @@ bool UOWSAuthentication::IsLoggedIn_Implementation()
         }
         else
         {
-            UE_LOG(LogOWSAuthentication, Error, TEXT("IsLoggedIn:  OWSGameInstanceSubsystem not found!"));
+            UE_LOG(LogOWSAuthentication, Error, TEXT("IsLoggedIn: OWSGameInstanceSubsystem not found!"));
             return false;
         }
     }
     else
     {
-        UE_LOG(LogOWSAuthentication, Error, TEXT("IsLoggedIn:  GameInstance not found!"));
+        UE_LOG(LogOWSAuthentication, Error, TEXT("IsLoggedIn: GameInstance not found!"));
         return false;
     }
 }

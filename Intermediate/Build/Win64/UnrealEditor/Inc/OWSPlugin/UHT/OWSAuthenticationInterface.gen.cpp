@@ -252,11 +252,11 @@ struct Z_Construct_UFunction_UOWSAuthenticationInterface_Login_Statics
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 		{ "Category", "OWS|Authentication" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "// Declaraci\xef\xbf\xbdn de funciones con BlueprintNativeEvent\n" },
+		{ "Comment", "// Declaraci\xef\xbf\xbdn de funciones con BlueprintNativeEvent sin el par\xef\xbf\xbdmetro CustomerGUID\n" },
 #endif
 		{ "ModuleRelativePath", "Public/Authentication/OWSAuthenticationInterface.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "Declaraci\xef\xbf\xbdn de funciones con BlueprintNativeEvent" },
+		{ "ToolTip", "Declaraci\xef\xbf\xbdn de funciones con BlueprintNativeEvent sin el par\xef\xbf\xbdmetro CustomerGUID" },
 #endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Username_MetaData[] = {
@@ -479,7 +479,7 @@ struct Z_Construct_UClass_UOWSAuthenticationInterface_Statics
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_UOWSAuthenticationInterface_IsLoggedIn, "IsLoggedIn" }, // 3217614915
-		{ &Z_Construct_UFunction_UOWSAuthenticationInterface_Login, "Login" }, // 2502362971
+		{ &Z_Construct_UFunction_UOWSAuthenticationInterface_Login, "Login" }, // 1826037395
 		{ &Z_Construct_UFunction_UOWSAuthenticationInterface_Logout, "Logout" }, // 3229147935
 		{ &Z_Construct_UFunction_UOWSAuthenticationInterface_Register, "Register" }, // 665699942
 	};
@@ -530,10 +530,10 @@ UOWSAuthenticationInterface::~UOWSAuthenticationInterface() {}
 struct Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UOWSAuthenticationInterface, UOWSAuthenticationInterface::StaticClass, TEXT("UOWSAuthenticationInterface"), &Z_Registration_Info_UClass_UOWSAuthenticationInterface, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UOWSAuthenticationInterface), 2014709366U) },
+		{ Z_Construct_UClass_UOWSAuthenticationInterface, UOWSAuthenticationInterface::StaticClass, TEXT("UOWSAuthenticationInterface"), &Z_Registration_Info_UClass_UOWSAuthenticationInterface, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UOWSAuthenticationInterface), 3841418255U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_605449014(TEXT("/Script/OWSPlugin"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_3154444700(TEXT("/Script/OWSPlugin"),
 	Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_Authentication_OWSAuthenticationInterface_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

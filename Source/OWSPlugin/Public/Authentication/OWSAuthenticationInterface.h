@@ -19,7 +19,7 @@ class OWSPLUGIN_API IOWSAuthenticationInterface
     GENERATED_BODY()
 
 public:
-    // Declaración de funciones con BlueprintNativeEvent
+    // Declaración de funciones con BlueprintNativeEvent sin el parámetro CustomerGUID
     UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "OWS|Authentication")
     void Login(const FString& Username, const FString& Password, const FLoginDelegate& Callback);
 

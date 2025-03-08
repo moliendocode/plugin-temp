@@ -179,6 +179,7 @@ void AOWSPlayerController::Server_GetCharacterData_Implementation(const FString&
     {
         if (UOWSGameInstanceSubsystem* OWSGameInstanceSubsystem = GameInstance->GetSubsystem<UOWSGameInstanceSubsystem>())
         {
+            FString CustomerGUID = OWSPluginConfig::GetCustomerGUID();
             FString authToken = OWSGameInstanceSubsystem->GetAuthToken();
 
             TSharedPtr<FJsonObject> RequestJson = MakeShareable(new FJsonObject);
@@ -193,6 +194,7 @@ void AOWSPlayerController::Server_GetCharacterData_Implementation(const FString&
             HttpRequest->SetURL(TEXT("http://localhost:44323/api/Character/GetCharData")); // Your OWS2 server URL
             HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
             HttpRequest->SetHeader(TEXT("Authorization"), FString::Printf(TEXT("Bearer %s"), *authToken));
+            HttpRequest->SetHeader(TEXT("X-CustomerGUID"), CustomerGUID);
             HttpRequest->SetContentAsString(RequestBody);
             HttpRequest->OnProcessRequestComplete().BindUObject(this, &AOWSPlayerController::OnGetCharacterDataResponseReceived);
             HttpRequest->ProcessRequest();
@@ -312,6 +314,7 @@ void AOWSPlayerController::Server_LoginUser_Implementation(const FString& Userna
         {
             FLoginDelegate LoginCallback;
             LoginCallback.BindDynamic(this, &AOWSPlayerController::OnLoginComplete);
+            // Llama a la función sin pasar CustomerGUID (la implementación la obtiene internamente)
             IOWSAuthenticationInterface::Execute_Login(Auth, Username, Password, LoginCallback);
         }
         else
@@ -365,20 +368,15 @@ void AOWSPlayerController::Client_OnLoginComplete_Implementation(bool bSuccess, 
 void AOWSPlayerController::Server_RegisterUser_Implementation(const FString& Username, const FString& Password, const FString& Email)
 {
     UE_LOG(LogOWSPlayerController, Verbose, TEXT("AOWSPlayerController::Server_RegisterUser_Implementation CALLED"));
+
     if (UGameInstance* GameInstance = GetGameInstance())
     {
         if (UOWSGameInstanceSubsystem* OWSGameInstanceSubsystem = GameInstance->GetSubsystem<UOWSGameInstanceSubsystem>())
         {
-            if (OWSGameInstanceSubsystem)
-            {
-                FRegisterDelegate RegisterCallback;
-                RegisterCallback.BindDynamic(this, &AOWSPlayerController::OnRegisterComplete);
-                IOWSAuthenticationInterface::Execute_Register(OWSGameInstanceSubsystem, Username, Password, Email, RegisterCallback);
-            }
-            else
-            {
-                UE_LOG(LogOWSPlayerController, Error, TEXT("AOWSPlayerController::Server_RegisterUser_Implementation AuthInterface is NULL"));
-            }
+            // Usa el objeto de autenticación del subsistema
+            FRegisterDelegate RegisterCallback;
+            RegisterCallback.BindDynamic(this, &AOWSPlayerController::OnRegisterComplete);
+            IOWSAuthenticationInterface::Execute_Register(OWSGameInstanceSubsystem->GetAuthentication(), Username, Password, Email, RegisterCallback);
         }
         else
         {

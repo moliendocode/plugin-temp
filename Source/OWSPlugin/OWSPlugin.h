@@ -16,3 +16,17 @@ public:
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
 };
+
+namespace OWSPluginConfig
+{
+    static FORCEINLINE FString GetCustomerGUID()
+    {
+        FString GUID;
+        // Ahora se lee desde la sección [/Script/OWSPlugin]
+        if (GConfig->GetString(TEXT("/Script/OWSPlugin"), TEXT("CustomerGUID"), GUID, GGameIni))
+        {
+            return GUID;
+        }
+        return TEXT("");
+    }
+}
