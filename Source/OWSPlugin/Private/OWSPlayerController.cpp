@@ -4,6 +4,7 @@
 #include "DataTypes/OWSDataTypes.h"
 #include "GameFramework/Pawn.h"
 #include "OWSGameInstanceSubsystem.h"
+#include "Authentication/OWSAuthentication.h"
 #include "Kismet/GameplayStatics.h"
 #include "HttpModule.h"
 #include "Interfaces/IHttpRequest.h"
@@ -189,7 +190,7 @@ void AOWSPlayerController::Server_GetCharacterData_Implementation(const FString&
 
             TSharedRef<IHttpRequest, ESPMode::ThreadSafe> HttpRequest = FHttpModule::Get().CreateRequest();
             HttpRequest->SetVerb(TEXT("POST"));
-            HttpRequest->SetURL(TEXT("http://localhost:9000/api/Character/GetCharData")); // Your OWS2 server URL
+            HttpRequest->SetURL(TEXT("http://localhost:44323/api/Character/GetCharData")); // Your OWS2 server URL
             HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
             HttpRequest->SetHeader(TEXT("Authorization"), FString::Printf(TEXT("Bearer %s"), *authToken));
             HttpRequest->SetContentAsString(RequestBody);
@@ -302,25 +303,20 @@ void AOWSPlayerController::OnGetCharacterDataResponseReceived(FHttpRequestPtr Re
 void AOWSPlayerController::Server_LoginUser_Implementation(const FString& Username, const FString& Password)
 {
     UE_LOG(LogOWSPlayerController, Verbose, TEXT("AOWSPlayerController::Server_LoginUser_Implementation CALLED"));
+
     if (UGameInstance* GameInstance = GetGameInstance())
     {
-        if (UOWSGameInstanceSubsystem* OWSGameInstanceSubsystem = GameInstance->GetSubsystem<UOWSGameInstanceSubsystem>())
+        // Crea una instancia de UOWSAuthentication asociada al GameInstance
+        UOWSAuthentication* Auth = NewObject<UOWSAuthentication>(GameInstance);
+        if (Auth)
         {
-            //Use the interface object directly
-            if (OWSGameInstanceSubsystem)
-            {
-                FLoginDelegate LoginCallback;
-                LoginCallback.BindDynamic(this, &AOWSPlayerController::OnLoginComplete);
-                IOWSAuthenticationInterface::Execute_Login(OWSGameInstanceSubsystem, Username, Password, LoginCallback);
-            }
-            else
-            {
-                UE_LOG(LogOWSPlayerController, Error, TEXT("AOWSPlayerController::Server_LoginUser_Implementation AuthInterface is NULL"));
-            }
+            FLoginDelegate LoginCallback;
+            LoginCallback.BindDynamic(this, &AOWSPlayerController::OnLoginComplete);
+            IOWSAuthenticationInterface::Execute_Login(Auth, Username, Password, LoginCallback);
         }
         else
         {
-            UE_LOG(LogOWSPlayerController, Error, TEXT("Server_LoginUser_Implementation: OWSGameInstanceSubsystem is NULL"));
+            UE_LOG(LogOWSPlayerController, Error, TEXT("Failed to create UOWSAuthentication instance."));
         }
     }
     else

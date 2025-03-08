@@ -363,6 +363,116 @@ DEFINE_FUNCTION(AOWSPlayerController::execLoginUser)
 }
 // End Class AOWSPlayerController Function LoginUser
 
+// Begin Class AOWSPlayerController Function OnLoginComplete
+struct Z_Construct_UFunction_AOWSPlayerController_OnLoginComplete_Statics
+{
+	struct OWSPlayerController_eventOnLoginComplete_Parms
+	{
+		bool bSuccess;
+		FString ErrorMessage;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/OWSPlayerController.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ErrorMessage_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif // WITH_METADATA
+	static void NewProp_bSuccess_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_bSuccess;
+	static const UECodeGen_Private::FStrPropertyParams NewProp_ErrorMessage;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+void Z_Construct_UFunction_AOWSPlayerController_OnLoginComplete_Statics::NewProp_bSuccess_SetBit(void* Obj)
+{
+	((OWSPlayerController_eventOnLoginComplete_Parms*)Obj)->bSuccess = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_AOWSPlayerController_OnLoginComplete_Statics::NewProp_bSuccess = { "bSuccess", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(OWSPlayerController_eventOnLoginComplete_Parms), &Z_Construct_UFunction_AOWSPlayerController_OnLoginComplete_Statics::NewProp_bSuccess_SetBit, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_AOWSPlayerController_OnLoginComplete_Statics::NewProp_ErrorMessage = { "ErrorMessage", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSPlayerController_eventOnLoginComplete_Parms, ErrorMessage), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ErrorMessage_MetaData), NewProp_ErrorMessage_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSPlayerController_OnLoginComplete_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSPlayerController_OnLoginComplete_Statics::NewProp_bSuccess,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSPlayerController_OnLoginComplete_Statics::NewProp_ErrorMessage,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSPlayerController_OnLoginComplete_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSPlayerController_OnLoginComplete_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSPlayerController, nullptr, "OnLoginComplete", nullptr, nullptr, Z_Construct_UFunction_AOWSPlayerController_OnLoginComplete_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSPlayerController_OnLoginComplete_Statics::PropPointers), sizeof(Z_Construct_UFunction_AOWSPlayerController_OnLoginComplete_Statics::OWSPlayerController_eventOnLoginComplete_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSPlayerController_OnLoginComplete_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSPlayerController_OnLoginComplete_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_AOWSPlayerController_OnLoginComplete_Statics::OWSPlayerController_eventOnLoginComplete_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_AOWSPlayerController_OnLoginComplete()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSPlayerController_OnLoginComplete_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AOWSPlayerController::execOnLoginComplete)
+{
+	P_GET_UBOOL(Z_Param_bSuccess);
+	P_GET_PROPERTY(FStrProperty,Z_Param_ErrorMessage);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->OnLoginComplete(Z_Param_bSuccess,Z_Param_ErrorMessage);
+	P_NATIVE_END;
+}
+// End Class AOWSPlayerController Function OnLoginComplete
+
+// Begin Class AOWSPlayerController Function OnRegisterComplete
+struct Z_Construct_UFunction_AOWSPlayerController_OnRegisterComplete_Statics
+{
+	struct OWSPlayerController_eventOnRegisterComplete_Parms
+	{
+		bool bSuccess;
+		FString ErrorMessage;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/OWSPlayerController.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ErrorMessage_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif // WITH_METADATA
+	static void NewProp_bSuccess_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_bSuccess;
+	static const UECodeGen_Private::FStrPropertyParams NewProp_ErrorMessage;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+void Z_Construct_UFunction_AOWSPlayerController_OnRegisterComplete_Statics::NewProp_bSuccess_SetBit(void* Obj)
+{
+	((OWSPlayerController_eventOnRegisterComplete_Parms*)Obj)->bSuccess = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_AOWSPlayerController_OnRegisterComplete_Statics::NewProp_bSuccess = { "bSuccess", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(OWSPlayerController_eventOnRegisterComplete_Parms), &Z_Construct_UFunction_AOWSPlayerController_OnRegisterComplete_Statics::NewProp_bSuccess_SetBit, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_AOWSPlayerController_OnRegisterComplete_Statics::NewProp_ErrorMessage = { "ErrorMessage", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(OWSPlayerController_eventOnRegisterComplete_Parms, ErrorMessage), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ErrorMessage_MetaData), NewProp_ErrorMessage_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AOWSPlayerController_OnRegisterComplete_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSPlayerController_OnRegisterComplete_Statics::NewProp_bSuccess,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AOWSPlayerController_OnRegisterComplete_Statics::NewProp_ErrorMessage,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSPlayerController_OnRegisterComplete_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOWSPlayerController_OnRegisterComplete_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOWSPlayerController, nullptr, "OnRegisterComplete", nullptr, nullptr, Z_Construct_UFunction_AOWSPlayerController_OnRegisterComplete_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSPlayerController_OnRegisterComplete_Statics::PropPointers), sizeof(Z_Construct_UFunction_AOWSPlayerController_OnRegisterComplete_Statics::OWSPlayerController_eventOnRegisterComplete_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOWSPlayerController_OnRegisterComplete_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOWSPlayerController_OnRegisterComplete_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_AOWSPlayerController_OnRegisterComplete_Statics::OWSPlayerController_eventOnRegisterComplete_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_AOWSPlayerController_OnRegisterComplete()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOWSPlayerController_OnRegisterComplete_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AOWSPlayerController::execOnRegisterComplete)
+{
+	P_GET_UBOOL(Z_Param_bSuccess);
+	P_GET_PROPERTY(FStrProperty,Z_Param_ErrorMessage);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->OnRegisterComplete(Z_Param_bSuccess,Z_Param_ErrorMessage);
+	P_NATIVE_END;
+}
+// End Class AOWSPlayerController Function OnRegisterComplete
+
 // Begin Class AOWSPlayerController Function RegisterUser
 struct Z_Construct_UFunction_AOWSPlayerController_RegisterUser_Statics
 {
@@ -705,6 +815,8 @@ void AOWSPlayerController::StaticRegisterNativesAOWSPlayerController()
 		{ "Client_OnLoginComplete", &AOWSPlayerController::execClient_OnLoginComplete },
 		{ "Client_OnRegisterComplete", &AOWSPlayerController::execClient_OnRegisterComplete },
 		{ "LoginUser", &AOWSPlayerController::execLoginUser },
+		{ "OnLoginComplete", &AOWSPlayerController::execOnLoginComplete },
+		{ "OnRegisterComplete", &AOWSPlayerController::execOnRegisterComplete },
 		{ "RegisterUser", &AOWSPlayerController::execRegisterUser },
 		{ "Server_GetCharacterData", &AOWSPlayerController::execServer_GetCharacterData },
 		{ "Server_LoginUser", &AOWSPlayerController::execServer_LoginUser },
@@ -795,6 +907,8 @@ struct Z_Construct_UClass_AOWSPlayerController_Statics
 		{ &Z_Construct_UFunction_AOWSPlayerController_Client_OnLoginComplete, "Client_OnLoginComplete" }, // 348781693
 		{ &Z_Construct_UFunction_AOWSPlayerController_Client_OnRegisterComplete, "Client_OnRegisterComplete" }, // 3198146258
 		{ &Z_Construct_UFunction_AOWSPlayerController_LoginUser, "LoginUser" }, // 1121337411
+		{ &Z_Construct_UFunction_AOWSPlayerController_OnLoginComplete, "OnLoginComplete" }, // 3624148609
+		{ &Z_Construct_UFunction_AOWSPlayerController_OnRegisterComplete, "OnRegisterComplete" }, // 3721690653
 		{ &Z_Construct_UFunction_AOWSPlayerController_RegisterUser, "RegisterUser" }, // 903181226
 		{ &Z_Construct_UFunction_AOWSPlayerController_Server_GetCharacterData, "Server_GetCharacterData" }, // 581337964
 		{ &Z_Construct_UFunction_AOWSPlayerController_Server_LoginUser, "Server_LoginUser" }, // 1710436485
@@ -868,10 +982,10 @@ AOWSPlayerController::~AOWSPlayerController() {}
 struct Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_OWSPlayerController_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AOWSPlayerController, AOWSPlayerController::StaticClass, TEXT("AOWSPlayerController"), &Z_Registration_Info_UClass_AOWSPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AOWSPlayerController), 4071779217U) },
+		{ Z_Construct_UClass_AOWSPlayerController, AOWSPlayerController::StaticClass, TEXT("AOWSPlayerController"), &Z_Registration_Info_UClass_AOWSPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AOWSPlayerController), 3135611159U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_OWSPlayerController_h_2853175089(TEXT("/Script/OWSPlugin"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_OWSPlayerController_h_2793698974(TEXT("/Script/OWSPlugin"),
 	Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_OWSPlayerController_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Unreal_Projects_UnrealFruits_Plugins_OWSPlugin_Source_OWSPlugin_Public_OWSPlayerController_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

@@ -47,6 +47,7 @@ public:
 	void Server_LoginUser(const FString& Username, const FString& Password);
 	void Server_LoginUser_Implementation(const FString& Username, const FString& Password);
 
+	UFUNCTION()
 	void OnLoginComplete(bool bSuccess, const FString& ErrorMessage);
 
 	UFUNCTION(Client, Reliable, Category = "OWS|Authentication")
@@ -67,6 +68,7 @@ public:
 	void Server_RegisterUser(const FString& Username, const FString& Password, const FString& Email);
 	bool Server_RegisterUser_Validate(const FString& Username, const FString& Password, const FString& Email);
 
+	UFUNCTION()
 	void OnRegisterComplete(bool bSuccess, const FString& ErrorMessage);
 
 	UFUNCTION(Client, Reliable, Category = "OWS|Authentication")

@@ -10,7 +10,7 @@
 DEFINE_LOG_CATEGORY(LogOWSAuthentication); // Define a log category
 
 UOWSAuthentication::UOWSAuthentication() :
-    BaseUrl(TEXT("http://localhost:9000")) //  Replace with your OWS2 server URL
+    BaseUrl(TEXT("http://localhost:44302")) //  Replace with your OWS2 server URL
 {
 
 }

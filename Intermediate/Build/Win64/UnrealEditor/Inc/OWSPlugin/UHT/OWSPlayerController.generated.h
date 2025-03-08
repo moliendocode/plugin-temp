@@ -37,9 +37,11 @@ OWSPLUGIN_API void FOnRegisterFailDelegate_DelegateWrapper(const FMulticastScrip
 	DECLARE_FUNCTION(execServer_Move); \
 	DECLARE_FUNCTION(execServer_GetCharacterData); \
 	DECLARE_FUNCTION(execClient_OnRegisterComplete); \
+	DECLARE_FUNCTION(execOnRegisterComplete); \
 	DECLARE_FUNCTION(execServer_RegisterUser); \
 	DECLARE_FUNCTION(execRegisterUser); \
 	DECLARE_FUNCTION(execClient_OnLoginComplete); \
+	DECLARE_FUNCTION(execOnLoginComplete); \
 	DECLARE_FUNCTION(execServer_LoginUser); \
 	DECLARE_FUNCTION(execLoginUser);
 
