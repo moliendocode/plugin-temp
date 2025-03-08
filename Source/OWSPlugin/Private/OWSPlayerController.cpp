@@ -434,3 +434,15 @@ bool AOWSPlayerController::Server_Move_Validate(FVector_NetQuantize NewLocation)
 {
     return true;
 }
+
+// --------------------------------------------------------------------------------------- //
+
+void AOWSPlayerController::LoginUser(const FString& Username, const FString& Password)
+{
+    Server_LoginUser(Username, Password);
+}
+
+void AOWSPlayerController::RegisterUser(const FString& Username, const FString& Password, const FString& Email)
+{
+    Server_RegisterUser(Username, Password, Email);
+}
